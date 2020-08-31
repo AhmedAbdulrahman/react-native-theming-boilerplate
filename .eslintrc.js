@@ -46,6 +46,7 @@ module.exports = {
     'arrow-body-style': 'off', // Don't enforce, readability firsthand.
     'consistent-this': ['error', 'self'],
     'linebreak-style': 'off', // Doesn't play nicely with Windows
+    'no-use-before-define': 'off',
     // just as bad as "max components per file"
     'max-classes-per-file': 'off',
     'no-alert': 'error',
