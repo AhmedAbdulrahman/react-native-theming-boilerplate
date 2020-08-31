@@ -4,10 +4,13 @@ module.exports = {
     es6: true,
   },
   extends: ['plugin:import/recommended', 'airbnb', 'prettier', 'prettier/react'],
-  parser: 'babel-eslint',
+  parser: 'babel-eslint', // Specifies the ESLint parser
   parserOptions: {
-    ecmaVersion: 7,
-    sourceType: 'module',
+    ecmaVersion: 8, // Allows for the parsing of modern ECMAScript features
+    sourceType: 'module', // Allows for the use of imports
+    ecmaFeatures: {
+      jsx: true, // Allows for the parsing of JSX
+    },
   },
   plugins: ['react', 'react-hooks', 'react-native'],
   settings: {
@@ -35,7 +38,7 @@ module.exports = {
       },
     },
     react: {
-      version: 'detect',
+      version: 'detect', // Tells eslint-plugin-react to automatically detect the version of React to use
     },
   },
   /**
