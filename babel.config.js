@@ -3,7 +3,7 @@ const defaultAlias = {
   '@components': './src/components',
   '@containers': './src/containers',
   '@screens': './src/screens',
-  '@theme': './src/theme',
+  '@styles': './src/styles',
   '@constants': './src/constants',
   '@navigation': './src/navigation',
   '@assets': './assets',
