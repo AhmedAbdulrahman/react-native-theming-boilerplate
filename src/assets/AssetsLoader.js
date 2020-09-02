@@ -1,13 +1,13 @@
 import React from 'react'
+import { NavigationContainer } from '@react-navigation/native'
 import { AppLoading } from 'expo'
 import { AsyncStorage } from 'react-native'
-import { NavigationContainer } from '@react-navigation/native'
 import Constants from 'expo-constants'
-import { useLoadAssets } from '@hooks'
+import { useLoadAssets } from 'hooks'
 
 const NAVIGATION_STATE_KEY = `NAVIGATION_STATE_KEY-${Constants.manifest.sdkVersion}`
 
-function AssetsLoader(props) {
+const AssetsLoader = React.forwardRef(function Navigation(props, ref) {
   const { assets, fonts, children } = props
 
   const [isNavigationReady, setIsNavigationReady] = React.useState(!__DEV__)
@@ -38,6 +38,10 @@ function AssetsLoader(props) {
   if (!ready || !isNavigationReady) {
     return <AppLoading />
   }
-  return <NavigationContainer {...{ onStateChange, initialState }}>{children}</NavigationContainer>
-}
+  return (
+    <NavigationContainer ref={ref} {...{ onStateChange, initialState }}>
+      {children}
+    </NavigationContainer>
+  )
+})
 export default AssetsLoader
