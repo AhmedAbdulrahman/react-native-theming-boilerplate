@@ -1,4 +1,4 @@
-import { deepmerge } from '@utils'
+import { deepmerge } from 'utils'
 import Color from 'color'
 import blue from './colors/blue'
 import common from './colors/common'
