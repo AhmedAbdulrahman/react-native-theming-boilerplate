@@ -58,7 +58,7 @@ module.exports = {
     'max-classes-per-file': OFF,
     'no-alert': ERROR,
     // Strict, airbnb is using warn; allow warn and error for dev environments
-    'no-console': [ERROR, { allow: ['warn', ERROR] }],
+    'no-console': [ERROR, { allow: ['warn', '2'] }],
     'no-constant-condition': ERROR,
     // Airbnb use error
     'no-param-reassign': OFF,
