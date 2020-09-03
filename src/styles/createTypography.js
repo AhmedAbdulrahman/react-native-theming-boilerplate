@@ -9,7 +9,7 @@ export default function createTypography(typographyOptions) {
       semibold: 'SFProText-Semibold',
       bold: 'SFProText-Bold',
     },
-    fontSize = 14, // px
+    baseFontSize = 14, // px
     fontWeightLight = '300',
     fontWeightRegular = '400',
     fontWeightMedium = '500',
@@ -47,7 +47,7 @@ export default function createTypography(typographyOptions) {
 
   return {
     fontFamilyPrimary,
-    fontSize,
+    baseFontSize,
     fontFamily: fontFamilyPrimary,
     fontWeightLight,
     fontWeightRegular,
@@ -55,5 +55,6 @@ export default function createTypography(typographyOptions) {
     fontWeightSemibold,
     fontWeightBold,
     ...variants,
+    ...other,
   }
 }
