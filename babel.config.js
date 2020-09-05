@@ -1,5 +1,5 @@
 const defaultAlias = {
-  src: './src',
+  src: './src/**',
   components: './src/components/',
   containers: './src/containers/',
   screens: './src/screens/',
@@ -7,7 +7,7 @@ const defaultAlias = {
   constants: './src/constants/',
   navigation: './src/navigation/',
   assets: './src/assets/',
-  i18n: './i18n',
+  i18n: './i18n/',
   hooks: './src/hooks/',
   storage: './src/storage/',
   utils: './src/utils/',
@@ -32,7 +32,7 @@ module.exports = (api) => {
       [
         'module-resolver',
         {
-          root: ['./src'],
+          root: ['./'],
           alias: defaultAlias,
           extensions: defaultExtensions,
         },
