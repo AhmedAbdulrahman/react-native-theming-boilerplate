@@ -19,6 +19,20 @@ module.exports = {
   plugins: ['react', 'react-hooks', 'react-native'],
   settings: {
     'import/resolver': {
+      'babel-module': {},
+      alias: [
+        ['src', './src/**'],
+        ['components', './src/components/'],
+        ['containers', './src/containers/'],
+        ['screens', './src/screens/'],
+        ['styles', './src/styles/'],
+        ['constants', './src/constants/'],
+        ['navigation', './src/styles/'],
+        ['i18n', './src/i18n/'],
+        ['hooks', './src/hooks/'],
+        ['storage', './src/storage/'],
+        ['utils', './src/utils/'],
+      ],
       node: {
         extensions: [
           '.js',
