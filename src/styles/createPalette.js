@@ -1,5 +1,5 @@
-import { deepmerge } from 'utils'
 import Color from 'color'
+import { deepmerge, getContrastRatio } from 'utils'
 import blue from './colors/blue'
 import common from './colors/common'
 import grey from './colors/grey'
@@ -128,6 +128,15 @@ export default function createPalette(palette) {
 
   const types = { dark, light }
 
+  function getContrastText(background) {
+    const contrastText =
+      getContrastRatio(background, dark.text.primary) >= contrastThreshold
+        ? dark.text.primary
+        : light.text.primary
+
+    return contrastText
+  }
+
   const paletteOutput = deepmerge(
     {
       // A collection of common colors.
@@ -158,6 +167,7 @@ export default function createPalette(palette) {
       // The light and dark type object.
       ...types[type],
     },
+    { getContrastText },
     other,
   )
 
