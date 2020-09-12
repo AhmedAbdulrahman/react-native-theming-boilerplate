@@ -59,7 +59,19 @@
     "eslint-plugin-react": "^7.20.6",
     "eslint-plugin-react-hooks": "^4.1.0",
     "eslint-plugin-react-native": "^3.9.0",
-    "prop-types": "^15.7.2"
+    "faker": "^5.1.0",
+    "prop-types": "^15.7.2",
+    "react-is": "^16.13.1",
+    "react-native-storybook-loader": "^2.0.2"
   },
-  "private": true
+  "private": true,
+  "config": {
+    "react-native-storybook-loader": {
+      "searchDir": [
+        "./src/components"
+      ],
+      "pattern": "**/stories.js",
+      "outputFile": "./storybook/storyLoader.js"
+    }
+  }
 }
