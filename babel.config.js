@@ -29,6 +29,7 @@ module.exports = (api) => {
   return {
     presets: ['babel-preset-expo'],
     plugins: [
+      ['babel-plugin-styled-components'],
       [
         'module-resolver',
         {
