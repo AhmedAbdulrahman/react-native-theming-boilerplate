@@ -1,6 +1,25 @@
-export { default as blue } from './blue'
-export { default as blueGrey } from './blueGrey'
-export { default as common } from './common'
-export { default as grey } from './grey'
-export { default as orange } from './orange'
-export { default as pink } from './pink'
+import blue from './blue'
+import common from './common'
+import grey from './grey'
+import green from './green'
+import orange from './orange'
+import red from './red'
+import pink from './pink'
+import colorize from './colorize'
+
+export const colorsMap = {
+  blue,
+  common,
+  green,
+  grey,
+  orange,
+  red,
+  pink,
+}
+
+const colors = Object.keys(colorsMap).reduce((shadesMap, shadeMapKey) => {
+  shadesMap[shadeMapKey] = colorize(colorsMap[shadeMapKey])
+  return shadesMap
+}, {})
+
+export default colors
