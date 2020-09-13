@@ -1,29 +1,24 @@
-import React from 'react'
-import { createStackNavigator } from '@react-navigation/stack'
-import { ThemeProvider } from '@shopify/restyle'
-import { LoadAssets } from './src/assets'
+import * as React from 'react'
+import { ThemeProvider } from 'styled-components'
+import { StatusBar } from 'expo-status-bar'
+import AuthenticationNavigator from 'screens/Authentication'
 import AppProvider from 'containers/App'
-import { Onboarding } from 'screens/Authentication'
+import { LoadAssets } from 'assets'
 import theme from 'styles/theme/light'
+import withStorybook from './src/hocs/withStorybook'
 
-const AuthenticationStack = createStackNavigator()
-
-function AuthenticationNavigator() {
-  return (
-    <AuthenticationStack.Navigator headerMode="none">
-      <AuthenticationStack.Screen name="Onboarding" component={Onboarding} />
-    </AuthenticationStack.Navigator>
-  )
-}
-
-export default function App() {
+function App() {
   return (
     <ThemeProvider {...{ theme }}>
       <AppProvider>
-        <LoadAssets>
+        <LoadAssets theme={theme}>
+          <StatusBar style={theme.palette.type === 'light' ? 'dark' : 'light'} />
           <AuthenticationNavigator />
         </LoadAssets>
       </AppProvider>
     </ThemeProvider>
   )
 }
+
+// eslint-disable-next-line no-undef
+export default __DEV__ ? withStorybook(App) : App
