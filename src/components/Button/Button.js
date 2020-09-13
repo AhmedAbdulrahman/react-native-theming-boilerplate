@@ -6,11 +6,13 @@ import { RectButton } from 'react-native-gesture-handler'
 const BaseButton = styled(RectButton)((props) => {
   const { theme, disabled, size, fullWidth, color, variant } = props
   const colors = {
-    default: theme.palette.action.active,
-    primary: theme.palette.primary.main,
-    secondary: theme.palette.secondary.main,
-    success: theme.palette.success.main,
-    disabled: theme.palette.action.disabledBackground,
+    default: theme.palette.action.active.string(),
+    primary: theme.palette.primary.main.string(),
+    secondary: theme.palette.secondary.main.string(),
+    success: theme.palette.success.main.string(),
+    info: theme.palette.info.main.string(),
+    error: theme.palette.error.main.string(),
+    disabled: theme.palette.action.disabledBackground.string(),
   }
   const variants = {
     contained: {
@@ -18,6 +20,8 @@ const BaseButton = styled(RectButton)((props) => {
       primary: { backgroundColor: colors.primary },
       secondary: { backgroundColor: colors.secondary },
       success: { backgroundColor: colors.success },
+      info: { backgroundColor: colors.info },
+      error: { backgroundColor: colors.error },
     },
     outlined: {
       default: { borderColor: colors.default, borderWidth: 1 },
@@ -41,7 +45,7 @@ const BaseButton = styled(RectButton)((props) => {
     ...variants[variant][color],
     ...(disabled && variant === 'contained' && { backgroundColor: colors.disabled }),
     ...(disabled && variant === 'outlined' && { borderColor: colors.disabled }),
-    ...(fullWidth && { width: '80%' }),
+    ...(fullWidth && { width: '100%' }),
     minWidth: 64,
     ...paddings[size],
     display: 'flex',
@@ -58,30 +62,35 @@ const Text = styled.Text((props) => {
   const variants = {
     contained: {
       default: {
-        color: theme.palette.action.active,
-        // color: theme.palette.getContrastText(theme.palette.action.active),
+        color: theme.palette.getContrastText(theme.palette.action.active),
       },
       primary: {
-        color: theme.palette.primary.contrastText,
+        color: theme.palette.primary.contrastText.string(),
       },
       secondary: {
-        color: theme.palette.secondary.contrastText,
+        color: theme.palette.primary.contrastText.string(),
+      },
+      info: {
+        color: theme.palette.common.white.string(),
       },
       success: {
-        color: theme.palette.common.white,
+        color: theme.palette.common.white.string(),
+      },
+      error: {
+        color: theme.palette.common.white.string(),
       },
     },
     outlined: {
-      default: { color: theme.palette.common.black },
-      primary: { color: theme.palette.primary.main },
-      secondary: { color: theme.palette.secondary.main },
-      success: { color: theme.palette.success.main },
+      default: { color: theme.palette.common.black.string() },
+      primary: { color: theme.palette.primary.main.string() },
+      secondary: { color: theme.palette.secondary.main.string() },
+      success: { color: theme.palette.success.main.string() },
     },
     text: {
-      default: { color: theme.palette.common.black },
-      primary: { color: theme.palette.primary.main },
-      secondary: { color: theme.palette.secondary.main },
-      success: { color: theme.palette.success.main },
+      default: { color: theme.palette.common.black.string() },
+      primary: { color: theme.palette.primary.light.string() },
+      secondary: { color: theme.palette.secondary.light.string() },
+      success: { color: theme.palette.success.light.string() },
     },
   }
   const fontSizes = {
@@ -92,7 +101,7 @@ const Text = styled.Text((props) => {
 
   return {
     ...variants[variant][color],
-    ...(disabled && { color: theme.palette.action.disabled }),
+    ...(disabled && { color: theme.palette.action.disabled.string() }),
     ...theme.typography.button,
     fontSize: fontSizes[size],
     lineHeight: `${fontSizes[size] * 1.25}px`,
@@ -142,7 +151,7 @@ Button.propTypes = {
   size: PropTypes.string,
   variant: PropTypes.string,
   component: PropTypes.element,
-  disabled: PropTypes.node,
+  disabled: PropTypes.bool,
 }
 
 export default Button
