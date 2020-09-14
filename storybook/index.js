@@ -3,7 +3,7 @@ import { getStorybookUI, configure, addDecorator, addParameters } from '@storybo
 import { withKnobs } from '@storybook/addon-knobs'
 import { ThemeProvider } from 'styled-components'
 import { create } from '@storybook/theming'
-import { LoadAssets } from 'assets'
+import { LoadAssets } from 'modules'
 import theme from 'styles/theme/light'
 import { loadStories } from './storyLoader'
 

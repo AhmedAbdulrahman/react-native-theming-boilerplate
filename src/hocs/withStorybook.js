@@ -1,7 +1,7 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
+import { LoadAssets } from 'modules'
 import AppProvider from 'containers/App'
-import { LoadAssets } from 'assets'
 import Button from 'components/Button'
 import Flex from 'components/Flex'
 import theme from 'styles/theme/light'

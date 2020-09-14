@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { ThemeProvider } from 'styled-components'
 import { StatusBar } from 'expo-status-bar'
+import { LoadAssets } from 'modules'
 import AuthenticationNavigator from 'screens/Authentication'
 import AppProvider from 'containers/App'
-import { LoadAssets } from 'assets'
 import theme from 'styles/theme/light'
 import withStorybook from './src/hocs/withStorybook'
 
