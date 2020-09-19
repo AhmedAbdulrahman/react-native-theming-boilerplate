@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavigationContainer } from '@react-navigation/native'
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native'
 import { AppLoading } from 'expo'
 import { AsyncStorage } from 'react-native'
 import Constants from 'expo-constants'
@@ -8,8 +8,11 @@ import { useLoadAssets } from 'hooks'
 const NAVIGATION_STATE_KEY = `NAVIGATION_STATE_KEY-${Constants.manifest.sdkVersion}`
 
 const AssetsLoader = React.forwardRef(function Navigation(props, ref) {
-  const { assets, fonts, children } = props
-
+  const { assets, fonts, children, theme } = props
+  const customTheme = {
+    ...DefaultTheme,
+    ...theme,
+  }
   const [isNavigationReady, setIsNavigationReady] = React.useState(!__DEV__)
   const [initialState, setInitialState] = React.useState()
   const { ready } = useLoadAssets(assets, fonts)
@@ -39,7 +42,12 @@ const AssetsLoader = React.forwardRef(function Navigation(props, ref) {
     return <AppLoading />
   }
   return (
-    <NavigationContainer ref={ref} {...{ onStateChange, initialState }}>
+    <NavigationContainer
+      ref={ref}
+      independent
+      theme={customTheme}
+      {...{ onStateChange, initialState }}
+    >
       {children}
     </NavigationContainer>
   )
