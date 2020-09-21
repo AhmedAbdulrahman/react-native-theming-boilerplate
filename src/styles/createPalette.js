@@ -129,8 +129,8 @@ export default function createPalette(paletteOptions) {
   const paletteOutput = merge(
     palette,
     { getContrastText },
+    { type },
     types[type],
-    type,
     // Used by `getContrastText()` to maximize the contrast between the background and
     // the text.
     contrastThreshold,
