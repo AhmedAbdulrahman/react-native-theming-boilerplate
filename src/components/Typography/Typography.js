@@ -22,7 +22,7 @@ function getColor(color, palette) {
     case TypographyColor.success:
       return palette.success.main
     case TypographyColor.grey:
-      return palette.text.disabled
+      return palette.text.secondary
     case TypographyColor.textPrimary:
       return palette.text.primary
     case TypographyColor.textSecondary:
