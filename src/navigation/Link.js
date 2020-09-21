@@ -23,7 +23,7 @@ const Link = React.forwardRef(function Link(props, ref) {
 
   const handlePress = React.useCallback(
     (e) => {
-      navigation.navigate(to, params)
+      navigation.push(to, params)
       if (onPress) {
         onPress(e)
       }
