@@ -1,7 +1,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import { SectionList, RefreshControl } from 'react-native'
-import styled from 'styled-components'
+import styled, { useTheme } from 'styled-components'
 import Constants from 'expo-constants'
 import ProductFlatList from 'containers/ProductFlatList'
 import Link from 'navigation/Link'
@@ -27,6 +27,7 @@ const SectionHeader = styled.View((props) => {
 
 const ProductGridSection = (props) => {
   const { products, ...other } = props
+  const theme = useTheme()
 
   const [refreshing, setRefreshing] = React.useState(false)
   const keyExtractor = React.useCallback((item) => item?.key, [])
@@ -38,7 +39,7 @@ const ProductGridSection = (props) => {
   }, [])
 
   const renderSection = React.useCallback(
-    ({ section }) => <ProductFlatList section={section} keyExtractor={keyExtractor} />,
+    ({ section }) => <ProductFlatList section={section} keyExtractor={keyExtractor} horizontal />,
     [keyExtractor],
   )
 
@@ -66,7 +67,13 @@ const ProductGridSection = (props) => {
   return (
     <Container>
       <SectionList
-        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+            tintColor={theme.palette.text.primary.rgb().string()}
+          />
+        }
         style={{
           paddingTop: Constants.statusBarHeight * 0.4,
         }}
