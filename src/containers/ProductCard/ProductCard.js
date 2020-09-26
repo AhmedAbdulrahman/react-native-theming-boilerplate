@@ -4,7 +4,6 @@ import { Pressable } from 'react-native'
 import styled from 'styled-components'
 import ProductMedia from 'containers/ProductMedia'
 import Link from 'navigation/Link'
-import Flex from 'components/Flex'
 import ProductToolbar from 'containers/ProductToolbar'
 import { Routes } from 'navigation/Routes'
 
@@ -19,11 +18,11 @@ const ProductCard = React.forwardRef(function ProductCard(props, ref) {
 
   return (
     <Root ref={ref} {...other}>
-      <Flex {...MediaContaierProps}>
-        <Link to={Routes.Product} component={Pressable} params={{ product }}>
+      <Link to={Routes.Product} component={Pressable} params={{ product }}>
+        <Root {...MediaContaierProps}>
           <Media uri={product.uri} style={{ aspectRatio: 2 / 3 }} {...MediaProps} />
-        </Link>
-      </Flex>
+        </Root>
+      </Link>
       <ProductToolbar {...product} />
     </Root>
   )
