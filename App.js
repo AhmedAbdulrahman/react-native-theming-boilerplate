@@ -1,22 +1,18 @@
 import * as React from 'react'
-import { ThemeProvider } from 'styled-components'
-import { StatusBar } from 'expo-status-bar'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { LoadAssets } from 'modules'
-import AuthenticationNavigator from 'screens/Authentication'
 import AppProvider from 'containers/App'
-import theme from 'styles/theme/light'
 import withStorybook from './src/hocs/withStorybook'
 
 function App() {
   return (
-    <ThemeProvider {...{ theme }}>
-      <AppProvider>
-        <LoadAssets theme={theme}>
-          <StatusBar style={theme.palette.type === 'light' ? 'dark' : 'light'} />
-          <AuthenticationNavigator />
+    <AppProvider>
+      <SafeAreaProvider>
+        <LoadAssets>
+          <App />
         </LoadAssets>
-      </AppProvider>
-    </ThemeProvider>
+      </SafeAreaProvider>
+    </AppProvider>
   )
 }
 
