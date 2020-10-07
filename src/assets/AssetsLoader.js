@@ -1,14 +1,17 @@
-import React from 'react'
+import * as React from 'react'
+import PropTypes from 'prop-types'
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native'
 import { AppLoading } from 'expo'
 import { AsyncStorage } from 'react-native'
 import Constants from 'expo-constants'
+import TabNavigation from 'navigation/TabNavigation'
 import { useLoadAssets } from 'hooks'
 
 const NAVIGATION_STATE_KEY = `NAVIGATION_STATE_KEY-${Constants.manifest.sdkVersion}`
 
 const AssetsLoader = React.forwardRef(function Navigation(props, ref) {
-  const { assets, fonts, children, theme } = props
+  const { NavigationContainerProps, TabNavigationProps, assets, fonts, children, theme } = props
+
   const customTheme = {
     ...DefaultTheme,
     ...theme,
@@ -46,10 +49,20 @@ const AssetsLoader = React.forwardRef(function Navigation(props, ref) {
       ref={ref}
       independent
       theme={customTheme}
+      {...NavigationContainerProps}
       {...{ onStateChange, initialState }}
     >
-      {children}
+      <TabNavigation {...TabNavigationProps} />
     </NavigationContainer>
   )
 })
+
+AssetsLoader.propTypes = {
+  children: PropTypes.node,
+  NavigationContainerProps: PropTypes.object,
+  TabNavigationProps: PropTypes.object,
+  assets: PropTypes.array,
+  fonts: PropTypes.array,
+  theme: PropTypes.object,
+}
 export default AssetsLoader
