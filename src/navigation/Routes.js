@@ -1,16 +1,30 @@
 export const Routes = {
   Home: 'Home',
+  Shop: 'Shop',
+  Cart: 'Cart',
+  Profile: 'Profile',
+  Catalog: 'Catalog',
+  Products: 'Products',
+  Product: 'Product',
+  Search: 'Search',
+  Login: 'Login',
+  Register: 'Register',
+  ProfileDetails: 'Profile Details',
+  ProfileSettings: 'Profile Settings',
+  Settings: 'Settings',
+  Orders: 'Orders',
+  OrderDetails: 'Order Details',
   Onboarding: 'Onboarding',
   Welcome: 'Welcome',
   SignIn: 'SignIn',
   SignUp: 'SignUp',
   ForgotPassword: 'ForgotPassword',
-  Product: 'Product',
 }
 
 export const TabRoutes = {
   Home: 'Home',
-  Shop: 'Shop',
-  Cart: 'Cart',
+  Search: 'Search',
+  Orders: 'Orders',
   Profile: 'Profile',
+  Shop: 'Shop',
 }
