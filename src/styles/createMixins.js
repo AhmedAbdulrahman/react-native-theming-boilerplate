@@ -31,8 +31,8 @@ export default function createMixins(spacing, mixins) {
       paddingBottom: spacing(amount),
     }),
     container: {
-      paddingLeft: spacing(1),
-      paddingRight: spacing(1),
+      paddingLeft: spacing(2),
+      paddingRight: spacing(2),
     },
     absolute: (...args) => {
       return position('absolute', ...args)
