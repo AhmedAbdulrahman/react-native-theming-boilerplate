@@ -7,7 +7,7 @@ import { onScrollEvent, useValue } from 'react-native-redash'
 import Media from 'components/Media'
 import ProductMedia from 'containers/ProductMedia'
 import Flex from 'components/Flex'
-import Line from 'components/Line'
+import Divider from 'components/Divider'
 import Typography from 'components/Typography'
 import Spacing from 'components/Spacing'
 import Container from 'components/Container'
@@ -64,7 +64,7 @@ const Product = (props) => {
 
   const renderListItem = React.useCallback(({ item }) => {
     return (
-      <Spacing key={item} mt={3} mb={1}>
+      <Spacing key={item} mt={2} mb={2}>
         <Flex flexDirection="row" justify="space-between">
           <ProductMedia rounded uri={item.uri} style={[StyleSheet.absoluteFillObject]} />
           <Spacing ml={2}>
@@ -106,7 +106,7 @@ const Product = (props) => {
         snapToInterval={theme.extras.constants.WINDOW_WIDTH * 0.72}
         ItemSeparatorComponent={() => {
           if (Platform.OS !== 'android' && !section.horizontal) {
-            return <Line />
+            return <Divider />
           }
           return null
         }}
@@ -159,7 +159,7 @@ const Product = (props) => {
                 stickySectionHeadersEnabled={false}
                 showsVerticalScrollIndicator={false}
                 ListHeaderComponent={
-                  <Container style={{ marginTop: HEADER_IMAGE_HEIGHT * 0.7 }}>
+                  <Container style={{ marginTop: HEADER_IMAGE_HEIGHT }}>
                     <ProductHeader {...{ product }} />
                   </Container>
                 }

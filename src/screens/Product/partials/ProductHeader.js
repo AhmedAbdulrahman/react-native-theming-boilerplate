@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { View } from 'react-native'
+import { useTheme } from 'styled-components'
 import ProductToolbar from 'containers/ProductToolbar'
 import Flex from 'components/Flex'
 import Spacing from 'components/Spacing'
@@ -11,6 +12,7 @@ import Button from 'components/Button'
 export const MIN_HEADER_HEIGHT = 150
 
 const ProductHeader = ({ product }) => {
+  const theme = useTheme()
   return (
     <Spacing mb={3} mt={1}>
       <View>
@@ -20,7 +22,7 @@ const ProductHeader = ({ product }) => {
             <Typography color="grey" variant="body2">
               4.3
             </Typography>
-            <SvgIcon icon="Star" />
+            <SvgIcon icon="Star" color={theme.palette.success.main.string()} />
             <Typography color="grey" variant="body2">
               200+ Ratings
             </Typography>
@@ -31,7 +33,7 @@ const ProductHeader = ({ product }) => {
             <Flex flexDirection="row">
               <Flex flexDirection="row">
                 <Spacing mr={1}>
-                  <SvgIcon icon="Currency" />
+                  <SvgIcon icon="Currency" color={theme.palette.success.main.string()} />
                 </Spacing>
                 <Flex>
                   <Typography color="dark" variant="subtitle2">
@@ -44,7 +46,7 @@ const ProductHeader = ({ product }) => {
               </Flex>
               <Flex flexDirection="row">
                 <Spacing mr={1}>
-                  <SvgIcon icon="Time" />
+                  <SvgIcon icon="Time" color={theme.palette.success.main.string()} />
                 </Spacing>
                 <Flex>
                   <Typography color="dark" variant="subtitle2">

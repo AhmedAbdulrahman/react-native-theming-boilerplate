@@ -1,15 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Dimensions, View } from 'react-native'
+import { Dimensions, ImageBackground } from 'react-native'
 import styled, { useTheme } from 'styled-components'
 import Animated from 'react-native-reanimated'
 import { Feather as Icon } from '@expo/vector-icons'
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
 import Constants from 'expo-constants'
-import Media from 'components/Media'
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 
-const AnimatedMedia = Animated.createAnimatedComponent(Media)
+const AnimatedMedia = Animated.createAnimatedComponent(ImageBackground)
 
 const BackgroundMedia = styled(AnimatedMedia)(() => ({
   position: 'absolute',
@@ -39,19 +38,17 @@ const ProductHeaderImage = ({ uri, y }) => {
     extrapolateLeft: Extrapolate.CLAMP,
   })
   return (
-    <View>
-      <BackgroundMedia source={{ uri }} style={{ top, height }} />
-      <View
+    <BackgroundMedia source={{ uri }} style={{ top, height }}>
+      <TouchableWithoutFeedback
+        onPress={() => goBack()}
         style={{
-          marginTop: Constants.statusBarHeight * 1.2,
+          marginTop: Constants.statusBarHeight * 1,
           ...theme.mixins.container,
         }}
       >
-        <TouchableWithoutFeedback onPress={() => goBack()}>
-          <Icon name="arrow-left" size={ICON_SIZE} color="white" />
-        </TouchableWithoutFeedback>
-      </View>
-    </View>
+        <Icon name="arrow-left" size={ICON_SIZE} color="white" />
+      </TouchableWithoutFeedback>
+    </BackgroundMedia>
   )
 }
 
