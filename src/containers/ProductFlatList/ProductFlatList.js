@@ -17,7 +17,7 @@ const ProductFlatList = (props) => {
   const FULLSIZE = ITEM_SIZE + theme.spacing() * 2
   const IMAGE_SIZE = theme.extras.constants.WINDOW_WIDTH * 0.4
 
-  const ITEM_FULLSIZE = IMAGE_SIZE * 0.5 + theme.spacing() * 2
+  const ITEM_FULLSIZE = IMAGE_SIZE * 0.7 + theme.spacing() * 2
 
   const scrollX = React.useRef(new Animated.Value(0)).current
 
@@ -46,7 +46,7 @@ const ProductFlatList = (props) => {
 
       const scale = scrollX.interpolate({
         inputRange,
-        outputRange: [1.3, 1, 1.1],
+        outputRange: [1.1, 1.2, 1.1],
       })
 
       return (
