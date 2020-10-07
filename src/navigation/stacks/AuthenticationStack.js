@@ -7,7 +7,7 @@ const AuthenticationStack = createStackNavigator()
 
 export default () => {
   return (
-    <AuthenticationStack.Navigator headerMode="none">
+    <AuthenticationStack.Navigator headerMode="none" initialRouteName="Onboarding">
       <AuthenticationStack.Screen name={Routes.Onboarding} component={Onboarding} />
       <AuthenticationStack.Screen name={Routes.SignIn} component={SignIn} />
       <AuthenticationStack.Screen name={Routes.SignUp} component={SignUp} />
