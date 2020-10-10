@@ -11,17 +11,11 @@ import Spacing from 'components/Spacing'
 import SvgIcon from 'components/SvgIcon'
 import { Routes } from 'navigation/Routes'
 
-// const Container = styled.View((props) => ({
-//   backgroundColor: props.theme.palette.background.paper.string(),
-//   flex: 1,
-//   padding: props.theme.spacing(2),
-// }))
-
 const OrderMedia = styled(Media)(() => ({
   width: 64,
 }))
 
-const OrderListItem = styled(ListItemLink)((props) => ({
+const OrderListItem = styled(ListItemLink)(() => ({
   alignItems: 'flex-start',
 }))
 
@@ -74,6 +68,18 @@ const Orders = () => {
             </Spacing>
           </OrderListItem>
         )}
+        ListHeaderComponent={
+          <Spacing mt={3} mr={4} mb={4}>
+            <Flex>
+              <Typography color="dark" variant="h4" paragraph>
+                Your Orders
+              </Typography>
+              <Typography color="grey" variant="body1">
+                Update your settings like notifications, payments, profile edit etc.
+              </Typography>
+            </Flex>
+          </Spacing>
+        }
       />
     </Container>
   )
