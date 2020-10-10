@@ -11,10 +11,10 @@ const AppProvider = (props) => {
   const [currentTheme, setCurrentTheme] = React.useState('light')
 
   const getSettings = React.useCallback(async () => {
-    const localTheme = await loadSettings()
+    const settings = await loadSettings()
 
-    if (localTheme) {
-      setCurrentTheme(localTheme)
+    if (settings?.theme) {
+      setCurrentTheme(settings?.theme)
     } else {
       saveSettings({ theme: 'light' })
     }
@@ -23,10 +23,10 @@ const AppProvider = (props) => {
   const onThemeToggle = React.useCallback(async () => {
     if (currentTheme === 'light') {
       setCurrentTheme('dark')
-      saveSettings('dark')
+      await saveSettings({ theme: 'dark' })
     } else {
       setCurrentTheme('light')
-      saveSettings('light')
+      await saveSettings({ theme: 'light' })
     }
   }, [currentTheme])
 
