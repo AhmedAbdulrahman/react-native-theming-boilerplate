@@ -46,6 +46,7 @@ const Text = styled.Text((props) => {
     gutterBottom = false,
     gutterTop = false,
     underline = false,
+    uppercase = false,
   } = props
 
   const variant = theme.typography[variantProp]
@@ -74,6 +75,7 @@ const Text = styled.Text((props) => {
     marginBottom,
     marginTop,
     ...(underline && { textDecorationLine: 'underline' }),
+    ...(uppercase && { textTransform: 'uppercase' }),
     ...variant,
   }
 })
