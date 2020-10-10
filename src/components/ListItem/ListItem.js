@@ -46,7 +46,7 @@ const ListItem = (props) => {
 ListItem.propTypes = {
   children: PropTypes.node,
   divider: PropTypes.bool,
-  component: PropTypes.element,
+  component: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
   button: PropTypes.bool,
 }
 
