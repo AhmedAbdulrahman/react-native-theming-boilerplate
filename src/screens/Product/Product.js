@@ -135,11 +135,13 @@ const Product = (props) => {
   }, [])
 
   return (
-    <Flex>
+    <>
       {isLoading ? (
-        <Flex align="center" justify="center">
-          <ActivityIndicator size="large" />
-        </Flex>
+        <Container>
+          <Flex align="center" justify="center">
+            <ActivityIndicator size="large" />
+          </Flex>
+        </Container>
       ) : (
         <>
           <View style={{ zIndex: 1 }}>
@@ -159,9 +161,11 @@ const Product = (props) => {
                 stickySectionHeadersEnabled={false}
                 showsVerticalScrollIndicator={false}
                 ListHeaderComponent={
-                  <Container style={{ marginTop: HEADER_IMAGE_HEIGHT }}>
+                  <View
+                    style={{ marginTop: HEADER_IMAGE_HEIGHT * 0.86, ...theme.mixins.container }}
+                  >
                     <ProductHeader {...{ product }} />
-                  </Container>
+                  </View>
                 }
                 {...{ onScroll }}
               />
@@ -169,7 +173,7 @@ const Product = (props) => {
           </Container>
         </>
       )}
-    </Flex>
+    </>
   )
 }
 
