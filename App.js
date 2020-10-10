@@ -1,20 +1,17 @@
 import * as React from 'react'
-import { SafeAreaProvider } from 'react-native-safe-area-context'
-import { LoadAssets } from 'modules'
-import AppProvider from 'containers/App'
-import withStorybook from './src/hocs/withStorybook'
+import AppProvider from 'containers/App/AppContext'
+import App from 'containers/App'
+import AppStack from 'navigation/stacks'
+// import withStorybook from './src/hocs/withStorybook'
 
-function App() {
+export default function Root() {
   return (
     <AppProvider>
-      <SafeAreaProvider>
-        <LoadAssets>
-          <App />
-        </LoadAssets>
-      </SafeAreaProvider>
+      <App>
+        <AppStack />
+      </App>
     </AppProvider>
   )
 }
 
-// eslint-disable-next-line no-undef
-export default __DEV__ ? withStorybook(App) : App
+// export default __DEV__ ? withStorybook(Root) : Root
