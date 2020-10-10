@@ -135,4 +135,7 @@ module.exports = {
     'react-native/no-color-literals': OFF,
     'react-native/no-raw-text': OFF,
   },
+  globals: {
+    __DEV__: true,
+  },
 }
