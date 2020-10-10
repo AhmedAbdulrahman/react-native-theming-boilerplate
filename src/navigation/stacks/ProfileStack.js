@@ -7,7 +7,8 @@ import ProfileSettingsScreen from 'screens/Member/ProfileSettings'
 import OrderDetailsScreen from 'screens/Member/OrderDetails'
 import OrdersScreen from 'screens/Member/Orders'
 import { Routes } from 'navigation/Routes'
-import IconButton from 'components/IconButton'
+import IconButton, { Container } from 'components/IconButton'
+import SvgIcon from 'components/SvgIcon'
 import Link from 'navigation/Link'
 
 const ProfileStack = createStackNavigator()
@@ -29,17 +30,22 @@ const ProfileStackScreen = () => {
           borderBottomWidth: 0,
         },
         headerTintColor: 'white',
+        headerBackImage: () => (
+          <Container>
+            <SvgIcon icon="ChevronLeft" color={theme.palette.text.primary.rgb().string()} />
+          </Container>
+        ),
       }}
     >
       <ProfileStack.Screen
         name={Routes.Profile}
-        options={{ headerTitle: 'My Profile' }}
+        options={{ headerShown: false }}
         component={ProfileScreen}
       />
       <ProfileStack.Screen
         name={Routes.ProfileDetails}
         options={{
-          headerTitle: 'My Information',
+          headerTitle: 'Profile Settings',
           headerBackTitleVisible: false,
           headerRight: () => (
             <HeaderButton component={IconButton} icon="Settings" to={Routes.ProfileSettings} />
@@ -58,7 +64,7 @@ const ProfileStackScreen = () => {
       <ProfileStack.Screen
         name={Routes.Orders}
         options={{
-          headerTitle: 'Orders',
+          headerShown: false,
           headerBackTitleVisible: false,
         }}
         component={OrdersScreen}
