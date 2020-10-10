@@ -1,8 +1,6 @@
 import * as React from 'react'
-import styled from 'styled-components'
 import { ScrollView } from 'react-native'
-import Media from 'components/Media'
-import Typography from 'components/Typography'
+import Container from 'components/Container'
 import TextField from 'components/TextField'
 import Button from 'components/Button'
 import Spacing from 'components/Spacing'
@@ -20,21 +18,6 @@ const initialProfileState = {
   phone: '0806588800',
 }
 
-const HeaderMedia = styled(Media)(() => ({
-  height: 250,
-}))
-
-const Container = styled.View((props) => ({
-  backgroundColor: props.theme.palette.background.paper.string(),
-  flex: 1,
-  padding: props.theme.spacing(2),
-}))
-
-const MemberNumberContainer = styled.View((props) => ({
-  backgroundColor: props.theme.palette.secondary.main.string(),
-  padding: props.theme.spacing(2),
-}))
-
 const ProfileDetails = () => {
   const [values, setValues] = React.useState(initialProfileState)
 
@@ -48,14 +31,9 @@ const ProfileDetails = () => {
   }
 
   return (
-    <ScrollView>
-      <HeaderMedia uri={'https://placekitten.com/375/250'} />
-      {/* <MemberNumberContainer>
-        <Typography variant="caption">medlemsnummer</Typography>
-        <Typography variant="body2">012345</Typography>
-      </MemberNumberContainer> */}
-      <Container>
-        <Spacing mt={2}>
+    <Container top={2}>
+      <ScrollView>
+        <Spacing mt={3}>
           <TextField
             label="E-mail"
             value={values.email}
@@ -98,8 +76,8 @@ const ProfileDetails = () => {
             Update
           </Button>
         </Spacing>
-      </Container>
-    </ScrollView>
+      </ScrollView>
+    </Container>
   )
 }
 
