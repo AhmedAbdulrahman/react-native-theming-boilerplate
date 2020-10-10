@@ -15,7 +15,7 @@ import Divider from 'components/Divider'
 import ListItem from 'components/ListItem'
 
 const RootFlatList = styled(FlatList)((props) => ({
-  backgroundColor: props.theme.palette.background.paper.string(),
+  backgroundColor: props.theme.palette.background.default.string(),
   flex: 1,
   padding: props.theme.spacing(2),
 }))
@@ -51,19 +51,19 @@ const OrderDetails = () => {
       data={[order]}
       ListHeaderComponent={() => (
         <>
-          <Typography>Jane Doe</Typography>
-          <Typography>Torkel Knutssonsgatan 27</Typography>
-          <Typography>118 25 Stockholm</Typography>
-          <Typography>SE</Typography>
+          <Typography color="dark">Jane Doe</Typography>
+          <Typography color="dark">Torkel Knutssonsgatan 27</Typography>
+          <Typography color="dark">118 25 Stockholm</Typography>
+          <Typography color="dark">SE</Typography>
           <Accordion>
-            <AccordionHeader>
-              <Typography>Billing Address</Typography>
+            <AccordionHeader IconButtonProps={{ color: theme.palette.text.primary.rgb().string() }}>
+              <Typography color="dark">Billing Address</Typography>
             </AccordionHeader>
             <AccordionContent>
-              <Typography>Jane Doe</Typography>
-              <Typography>Torkel Knutssonsgatan 27</Typography>
-              <Typography>118 25 Stockholm</Typography>
-              <Typography>SE</Typography>
+              <Typography color="dark">Jane Doe</Typography>
+              <Typography color="dark">Torkel Knutssonsgatan 27</Typography>
+              <Typography color="dark">118 25 Stockholm</Typography>
+              <Typography color="dark">SE</Typography>
             </AccordionContent>
           </Accordion>
           <Button size="large" color="success" fullWidth>
@@ -73,7 +73,9 @@ const OrderDetails = () => {
             <Flex flex={0} flexDirection="row" align="center">
               <Flex flexDirection="row" align="center">
                 <SvgIcon icon="Complete" color={theme.palette.success.main.string()} />
-                <Typography variant="caption">Ordered</Typography>
+                <Typography color="dark" variant="caption">
+                  Ordered
+                </Typography>
               </Flex>
               <Typography variant="caption" color="textSecondary">
                 Ordered on 19 aug.
@@ -90,12 +92,16 @@ const OrderDetails = () => {
             <OrderMedia style={{ aspectRatio: 64 / 96 }} uri={item.image} />
             <Spacing ml={2}>
               <Flex>
-                <Typography variant="body2">{item.title}</Typography>
+                <Typography color="dark" variant="body2">
+                  {item.title}
+                </Typography>
                 <Typography variant="body2" color="textSecondary">
                   {item.size}
                 </Typography>
               </Flex>
-              <Typography variant="body1">{item.total} SEK</Typography>
+              <Typography color="dark" variant="body1">
+                {item.total} SEK
+              </Typography>
             </Spacing>
           </OrderListItem>
         )
