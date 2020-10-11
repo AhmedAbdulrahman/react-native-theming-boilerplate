@@ -36,6 +36,7 @@ export default function createTypography(typographyOptions) {
     h4: buildVariant(fontFamilyPrimary.bold, 32, 1.2, -0.03),
     h5: buildVariant(fontFamilyPrimary.semibold, 24, 1.1, 0.2, caseAllCaps),
     h6: buildVariant(fontFamilyPrimary.semibold, 18, 1.1, -0.03),
+    h7: buildVariant(fontFamilyPrimary.semibold, 17, 1.1, -0.03),
     subtitle1: buildVariant(fontFamilyPrimary.semibold, 16, 1.3, -0.02),
     subtitle2: buildVariant(fontFamilyPrimary.semibold, 14, 1.3, -0.01),
     body1: buildVariant(fontFamilyPrimary.regular, 16, 1.3, -0.02),
