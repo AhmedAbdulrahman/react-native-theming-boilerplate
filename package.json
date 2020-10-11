@@ -17,7 +17,6 @@
     "@react-navigation/bottom-tabs": "^5.9.2",
     "@react-navigation/native": "^5.7.6",
     "@react-navigation/stack": "^5.9.3",
-    "@shopify/restyle": "^1.2.0",
     "color": "^3.1.2",
     "expo": "~39.0.3",
     "expo-asset": "~8.2.0",
