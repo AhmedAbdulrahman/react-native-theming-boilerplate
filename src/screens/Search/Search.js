@@ -26,134 +26,140 @@ const Search = () => {
   const width = (theme.extras.constants.WINDOW_WIDTH - theme.spacing() * 2 - theme.spacing()) / 2
   return (
     <Container>
-      <Flex>
-        <Flex>
-          <ScrollView showsVerticalScrollIndicator={false}>
-            <Flex flexDirection="row">
-              <Flex>
-                {data
-                  .filter((_, i) => i % 2 !== 0)
-                  .map((item) => (
-                    <View
-                      key={item.uri}
-                      style={{
-                        marginRight: theme.spacing(1.2),
-                        marginBottom: theme.spacing(1),
-                      }}
-                    >
-                      <ProductMedia
-                        rounded
-                        uri={item.uri}
-                        style={{
-                          width,
-                          height: width * item.aspectRatio,
-                          marginBottom: theme.spacing(2),
-                        }}
-                      />
-                      <Flex
-                        // eslint-disable-next-line react-native/no-inline-styles
-                        style={{
-                          position: 'absolute',
-                          bottom: 85,
-                          left: 15,
-                        }}
-                      >
-                        <Flex align="center" flexDirection="row">
-                          <Spacing mr={1}>
-                            <SvgIcon icon="Time" color={theme.palette.common.white.string()} />
-                          </Spacing>
-                          <Typography color="textWhite" variant="body2">
-                            {item.prepration}
-                          </Typography>
-                        </Flex>
-                        <Flex align="center" flexDirection="row">
-                          <Spacing mr={1}>
-                            <SvgIcon icon="Delivery" color={theme.palette.common.white.string()} />
-                          </Spacing>
-                          <Typography color="textWhite" variant="body2">
-                            {item.delivery}
-                          </Typography>
-                        </Flex>
-                      </Flex>
-                      <View
-                        style={{
-                          marginBottom: theme.spacing(1),
-                        }}
-                      >
-                        <Typography color="dark" variant="h6">
-                          {item.title}
-                        </Typography>
-                        <Typography color="textSecondary" variant="body1" gutterTop>
-                          {item.address}
-                        </Typography>
-                      </View>
-                    </View>
-                  ))}
-              </Flex>
-              <Flex>
-                {data
-                  .filter((_, i) => i % 2 === 0)
-                  .map((item) => (
-                    <View
-                      key={item.uri}
-                      style={{
-                        marginLeft: theme.spacing(1.5),
-                        marginBottom: theme.spacing(1),
-                      }}
-                    >
-                      <ProductMedia
-                        rounded
-                        uri={item.uri}
-                        style={{
-                          width,
-                          height: width * item.aspectRatio,
-                          marginBottom: theme.spacing(2),
-                        }}
-                      />
-                      <Flex
-                        // eslint-disable-next-line react-native/no-inline-styles
-                        style={{
-                          position: 'absolute',
-                          bottom: 85,
-                          left: 15,
-                        }}
-                      >
-                        <Flex align="center" flexDirection="row">
-                          <Spacing mr={1}>
-                            <SvgIcon icon="Time" color={theme.palette.common.white.string()} />
-                          </Spacing>
-                          <Typography color="textWhite" variant="body2">
-                            {item.prepration}
-                          </Typography>
-                        </Flex>
-                        <Flex align="center" flexDirection="row">
-                          <Spacing mr={1}>
-                            <SvgIcon icon="Delivery" color={theme.palette.common.white.string()} />
-                          </Spacing>
-                          <Typography color="textWhite" variant="body2">
-                            {item.delivery}
-                          </Typography>
-                        </Flex>
-                      </Flex>
-                      <View
-                        style={{
-                          marginBottom: theme.spacing(1),
-                        }}
-                      >
-                        <Typography color="dark" variant="h6">
-                          {item.title}
-                        </Typography>
-                        <Typography color="textSecondary" variant="body1" gutterTop>
-                          {item.address}
-                        </Typography>
-                      </View>
-                    </View>
-                  ))}
-              </Flex>
-            </Flex>
-          </ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <Spacing mt={3} mr={4} mb={4}>
+          <Flex>
+            <Typography color="dark" variant="h4" paragraph>
+              Search Resturants
+            </Typography>
+            <Typography color="grey" variant="body1">
+              Update your settings like notifications, payments, profile edit etc.
+            </Typography>
+          </Flex>
+        </Spacing>
+        <Flex flexDirection="row">
+          <Flex>
+            {data
+              .filter((_, i) => i % 2 !== 0)
+              .map((item) => (
+                <View
+                  key={item.uri}
+                  style={{
+                    marginRight: theme.spacing(1.2),
+                    marginBottom: theme.spacing(1),
+                  }}
+                >
+                  <ProductMedia
+                    rounded
+                    uri={item.uri}
+                    style={{
+                      width,
+                      height: width * item.aspectRatio,
+                      marginBottom: theme.spacing(2),
+                    }}
+                  />
+                  <Flex
+                    // eslint-disable-next-line react-native/no-inline-styles
+                    style={{
+                      position: 'absolute',
+                      bottom: 85,
+                      left: 15,
+                    }}
+                  >
+                    <Flex align="center" flexDirection="row">
+                      <Spacing mr={1}>
+                        <SvgIcon icon="Time" color={theme.palette.common.white.string()} />
+                      </Spacing>
+                      <Typography color="textWhite" variant="body2">
+                        {item.prepration}
+                      </Typography>
+                    </Flex>
+                    <Flex align="center" flexDirection="row">
+                      <Spacing mr={1}>
+                        <SvgIcon icon="Delivery" color={theme.palette.common.white.string()} />
+                      </Spacing>
+                      <Typography color="textWhite" variant="body2">
+                        {item.delivery}
+                      </Typography>
+                    </Flex>
+                  </Flex>
+                  <View
+                    style={{
+                      marginBottom: theme.spacing(1),
+                    }}
+                  >
+                    <Typography color="dark" variant="h6">
+                      {item.title}
+                    </Typography>
+                    <Typography color="textSecondary" variant="body1" gutterTop>
+                      {item.address}
+                    </Typography>
+                  </View>
+                </View>
+              ))}
+          </Flex>
+          <Flex>
+            {data
+              .filter((_, i) => i % 2 === 0)
+              .map((item) => (
+                <View
+                  key={item.uri}
+                  style={{
+                    marginLeft: theme.spacing(1.5),
+                    marginBottom: theme.spacing(1),
+                  }}
+                >
+                  <ProductMedia
+                    rounded
+                    uri={item.uri}
+                    style={{
+                      width,
+                      height: width * item.aspectRatio,
+                      marginBottom: theme.spacing(2),
+                    }}
+                  />
+                  <Flex
+                    // eslint-disable-next-line react-native/no-inline-styles
+                    style={{
+                      position: 'absolute',
+                      bottom: 85,
+                      left: 15,
+                    }}
+                  >
+                    <Flex align="center" flexDirection="row">
+                      <Spacing mr={1}>
+                        <SvgIcon icon="Time" color={theme.palette.common.white.string()} />
+                      </Spacing>
+                      <Typography color="textWhite" variant="body2">
+                        {item.prepration}
+                      </Typography>
+                    </Flex>
+                    <Flex align="center" flexDirection="row">
+                      <Spacing mr={1}>
+                        <SvgIcon icon="Delivery" color={theme.palette.common.white.string()} />
+                      </Spacing>
+                      <Typography color="textWhite" variant="body2">
+                        {item.delivery}
+                      </Typography>
+                    </Flex>
+                  </Flex>
+                  <View
+                    style={{
+                      marginBottom: theme.spacing(1),
+                    }}
+                  >
+                    <Typography color="dark" variant="h6">
+                      {item.title}
+                    </Typography>
+                    <Typography color="textSecondary" variant="body1" gutterTop>
+                      {item.address}
+                    </Typography>
+                  </View>
+                </View>
+              ))}
+          </Flex>
         </Flex>
-      </Flex>
+      </ScrollView>
     </Container>
   )
 }
