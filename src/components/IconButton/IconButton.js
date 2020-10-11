@@ -4,7 +4,7 @@ import { Pressable } from 'react-native'
 import styled, { useTheme } from 'styled-components'
 import SvgIcon from 'components/SvgIcon'
 
-const Container = styled.View((props) => ({
+export const Container = styled.View((props) => ({
   alignItems: 'center',
   justifyContent: 'center',
   width: 'auto',
@@ -20,7 +20,7 @@ const IconButton = React.forwardRef(function IconButton(props, ref) {
 
   const iconProps = {
     alignSelf: 'center',
-    color: theme.palette.action.active.rgb().string(),
+    color: theme.palette.background.default.rgb().string(),
     ...(disabled && { color: theme.palette.text.disabled.rgb().string() }),
     ...(color === 'primary' && { color: theme.palette.primary.main.rgb().string() }),
     ...(color === 'secondary' && { color: theme.palette.secondary.main.rgb().string() }),
