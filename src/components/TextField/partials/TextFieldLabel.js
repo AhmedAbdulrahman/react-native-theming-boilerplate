@@ -4,16 +4,18 @@ import styled, { useTheme } from 'styled-components'
 import Animated from 'react-native-reanimated'
 import { mix, mixColor, withSpringTransition } from 'react-native-redash'
 
-const Root = styled(Animated.View)({
+const Root = styled(Animated.View)(() => ({
   position: 'absolute',
   top: 0,
   left: '-100%',
   width: '200%',
   paddingLeft: '50%',
-})
+}))
 
 const Label = styled(Animated.Text)((props) => ({
+  ...(props.fullWidth && { width: '100%' }),
   ...props.theme.typography.body1,
+  textTransform: 'uppercase',
   textAlign: 'left',
 }))
 
@@ -36,7 +38,7 @@ const TextFieldLabel = (props) => {
     disabled
       ? theme.palette.text.disabled.rgb().string()
       : theme.palette.text.secondary.rgb().string(),
-    theme.palette.text.primary.rgb().string(),
+    theme.palette.text.disabled.rgb().string(),
   )
 
   return (
@@ -48,4 +50,10 @@ const TextFieldLabel = (props) => {
   )
 }
 
+TextFieldLabel.propTypes = {
+  children: PropTypes.node,
+  focused: PropTypes.bool,
+  disabled: PropTypes.bool,
+  error: PropTypes.bool,
+}
 export default React.memo(TextFieldLabel)

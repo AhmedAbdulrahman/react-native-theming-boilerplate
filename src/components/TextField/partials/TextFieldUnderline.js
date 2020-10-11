@@ -16,7 +16,7 @@ const Line = styled(Animated.View)((props) => ({
   right: 0,
   left: 0,
   height: StyleSheet.hairlineWidth,
-  backgroundColor: props.theme.palette.text.primary.rgb().string(),
+  backgroundColor: props.theme.palette.text.disabled.rgb().string(),
 
   ...(props.disabled && {
     bottom: -1.5,

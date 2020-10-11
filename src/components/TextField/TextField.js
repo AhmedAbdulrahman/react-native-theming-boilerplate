@@ -28,10 +28,15 @@ const InputContainer = styled.View((props) => ({
 
 const Input = styled.TextInput((props) => ({
   ...props.theme.typography.body1,
+  color: props.theme.palette.text.primary.rgb().string(),
   flex: 1,
   margin: 0,
-  lineHeight: '16px',
-  padding: props.theme.spacing(2, 1, 1, 0),
+
+  // lineHeight: '16px',
+  padding: props.theme.spacing(0, 1, 1, 0),
+  ...(props.label && {
+    paddingTop: props.theme.spacing(2),
+  }),
   textAlignVertical: 'top',
   includeFontPadding: 'false',
   ...(props.variant === 'outlined' && {
@@ -130,6 +135,7 @@ const TextField = React.forwardRef(function TextField(props, ref) {
             focused={focusAnimatedValue.current}
             disabled={disabled}
             error={error}
+            label={label}
             {...UnderlineProps}
           />
         )}
@@ -145,6 +151,7 @@ const TextField = React.forwardRef(function TextField(props, ref) {
             focused={labelAnimatedValue.current}
             disabled={disabled}
             error={error}
+            fullWidth={fullWidth}
             {...LabelProps}
           >
             {label}
@@ -163,6 +170,7 @@ const TextField = React.forwardRef(function TextField(props, ref) {
             placeholder={placeholder}
             fullWidth={fullWidth}
             variant={variant}
+            label={label}
             {...other}
           />
         </Box>
@@ -184,24 +192,27 @@ const TextField = React.forwardRef(function TextField(props, ref) {
 })
 
 TextField.propTypes = {
-  label: PropTypes.node,
-  defaultValue: PropTypes.string,
-  onFocus: PropTypes.func,
-  onBlur: PropTypes.func,
-  onClear: PropTypes.func,
-  onChangeText: PropTypes.func,
   clearTextOnFocus: PropTypes.bool,
-  helperText: PropTypes.node,
-  startAdornment: PropTypes.node,
-  endAdornment: PropTypes.node,
-  underline: PropTypes.bool,
+  defaultValue: PropTypes.string,
   disabled: PropTypes.bool,
   editable: PropTypes.bool,
-  placeholder: PropTypes.string,
-  UnderlineProps: PropTypes.object,
-  LabelProps: PropTypes.object,
+  endAdornment: PropTypes.node,
+  error: PropTypes.bool,
+  fullWidth: PropTypes.bool,
+  helperText: PropTypes.node,
   HelperTextProps: PropTypes.object,
-  value: PropTypes.string,
+  label: PropTypes.node,
+  LabelProps: PropTypes.object,
+  onBlur: PropTypes.func,
+  onChangeText: PropTypes.func,
+  onClear: PropTypes.func,
+  onFocus: PropTypes.func,
+  placeholder: PropTypes.string,
+  startAdornment: PropTypes.node,
   style: PropTypes.object,
+  underline: PropTypes.bool,
+  UnderlineProps: PropTypes.object,
+  value: PropTypes.string,
+  variant: PropTypes.string,
 }
 export default React.memo(TextField)
