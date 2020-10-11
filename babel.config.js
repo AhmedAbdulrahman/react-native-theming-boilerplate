@@ -28,7 +28,7 @@ const defaultExtensions = [
 module.exports = (api) => {
   api.cache(true)
   return {
-    presets: ['babel-preset-expo'],
+    presets: [['babel-preset-expo', { lazyImports: true }]],
     plugins: [
       ['babel-plugin-styled-components'],
       [
