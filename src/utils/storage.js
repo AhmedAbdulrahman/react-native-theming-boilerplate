@@ -4,7 +4,7 @@ import AsyncStorage from '@react-native-community/async-storage'
 const STORAGE_KEY = 'SETTINGS'
 
 const DEFAULT_SETTINGS = {
-  dark: false,
+  theme: 'light',
 }
 
 export const loadSettings = async () => {
