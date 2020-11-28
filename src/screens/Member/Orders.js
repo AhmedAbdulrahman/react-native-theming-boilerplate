@@ -40,6 +40,7 @@ const Orders = () => {
     <Container>
       <FlatList
         data={orderData}
+        showsVerticalScrollIndicator={false}
         renderItem={({ item }) => (
           <OrderListItem disableGutters divider to={Routes.OrderDetails}>
             <OrderMedia style={{ aspectRatio: 64 / 96 }} uri={item.uri} />
