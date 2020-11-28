@@ -58,7 +58,7 @@ const BaseButton = styled(RectButton)((props) => {
 })
 
 const Text = styled.Text((props) => {
-  const { theme, size, color, variant, disabled } = props
+  const { theme, size, color, variant, disabled, disableUppercase } = props
   const variants = {
     contained: {
       default: {
@@ -87,7 +87,7 @@ const Text = styled.Text((props) => {
       success: { color: theme.palette.success.main.string() },
     },
     text: {
-      default: { color: theme.palette.common.black.string() },
+      default: { color: theme.palette.text.primary.string() },
       primary: { color: theme.palette.primary.light.string() },
       secondary: { color: theme.palette.secondary.light.string() },
       success: { color: theme.palette.success.light.string() },
@@ -103,6 +103,7 @@ const Text = styled.Text((props) => {
     ...variants[variant][color],
     ...(disabled && { color: theme.palette.action.disabled.string() }),
     ...theme.typography.button,
+    ...(disableUppercase && { textTransform: 'none' }),
     fontSize: fontSizes[size],
     lineHeight: `${fontSizes[size] * 1.25}px`,
   }
@@ -116,13 +117,20 @@ const Button = React.forwardRef(function Button(props, ref) {
     variant = 'contained',
     component = RectButton,
     disabled = false,
+    disableUppercase = false,
     ...other
   } = props
 
   // wrap children with Text if necessary
   const children = React.Children.map(childrenProp, (child) => {
     return typeof child === 'string' ? (
-      <Text color={color} size={size} variant={variant} disabled={disabled}>
+      <Text
+        color={color}
+        size={size}
+        variant={variant}
+        disabled={disabled}
+        disableUppercase={disableUppercase}
+      >
         {child}
       </Text>
     ) : (
@@ -152,6 +160,7 @@ Button.propTypes = {
   variant: PropTypes.string,
   component: PropTypes.element,
   disabled: PropTypes.bool,
+  disableUppercase: PropTypes.bool,
 }
 
 export default Button
