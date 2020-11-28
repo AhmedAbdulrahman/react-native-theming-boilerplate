@@ -20,9 +20,6 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "experiments": {
-      "redesignedLogBox": true
-    },
     "packagerOpts": {
       "config": "metro.config.js",
       "sourceExts": [
