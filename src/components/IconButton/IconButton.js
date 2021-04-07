@@ -15,12 +15,12 @@ export const Container = styled.View((props) => ({
 }))
 
 const IconButton = React.forwardRef(function IconButton(props, ref) {
-  const { disabled, onPress, icon, color = 'default', size = 'medium', ...other } = props
+  const { disabled, onPress, icon, color, size = 'medium', ...other } = props
   const theme = useTheme()
 
   const iconProps = {
     alignSelf: 'center',
-    color: theme.palette.background.default.rgb().string(),
+    color: theme.palette.text.primary.rgb().string(),
     ...(disabled && { color: theme.palette.text.disabled.rgb().string() }),
     ...(color === 'primary' && { color: theme.palette.primary.main.rgb().string() }),
     ...(color === 'secondary' && { color: theme.palette.secondary.main.rgb().string() }),
