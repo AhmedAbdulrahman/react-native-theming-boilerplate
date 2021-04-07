@@ -1,4 +1,5 @@
 import React from 'react'
+
 const usePromiseAll = (promises, cb) =>
   React.useEffect(() => {
     ;(async () => {
@@ -6,4 +7,5 @@ const usePromiseAll = (promises, cb) =>
       cb()
     })()
   })
+
 export default usePromiseAll

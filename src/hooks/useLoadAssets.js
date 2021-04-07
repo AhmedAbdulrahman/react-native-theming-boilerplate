@@ -8,7 +8,7 @@ const useLoadAssets = (assets = [], fonts = {}) => {
   usePromiseAll([Font.loadAsync(fonts), ...assets.map((asset) => Asset.loadAsync(asset))], () =>
     setReady(true),
   )
-  return { ready }
+  return ready
 }
 
 export default useLoadAssets
