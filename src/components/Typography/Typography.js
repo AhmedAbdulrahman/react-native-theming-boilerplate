@@ -66,11 +66,9 @@ const Text = styled.Text((props) => {
 
   return {
     margin: 0,
-    color:
-      color &&
-      getColor(color, theme.palette)
-        .rgb()
-        .string(),
+    color: color
+      ? getColor(color, theme.palette).rgb().string()
+      : theme.palette.text.primary.rgb().string(),
     textAlign: align,
     marginBottom,
     marginTop,
