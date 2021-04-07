@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { StyleSheet } from 'react-native'
 import styled from 'styled-components'
 import Animated from 'react-native-reanimated'
-import { mix, withSpringTransition } from 'react-native-redash'
+import { mix, withSpringTransition } from 'react-native-redash/lib/module/v1'
 
 const Root = styled.View({
   overflow: 'hidden',
