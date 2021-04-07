@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { TapGestureHandler } from 'react-native-gesture-handler'
 import styled from 'styled-components'
 import Animated, { Easing } from 'react-native-reanimated'
-import { mix, withTransition } from 'react-native-redash'
+import { mix, withTransition } from 'react-native-redash/lib/module/v1'
 import { useAccordionContext } from 'components/Accordion/AccordionContext'
 import IconButton from 'components/IconButton'
 
@@ -18,7 +18,7 @@ const Header = styled.View({})
 const ExpandIcon = styled(Animated.View)({})
 
 const AccordionHeader = React.forwardRef(function AccordionHeader(props, ref) {
-  const { children, expandIcon = 'SmallArrowDown', IconButtonProps, ...other } = props
+  const { children, expandIcon = 'SmallArrowDown', IconButtonProps = {}, ...other } = props
   const { expanded, gestureHandler } = useAccordionContext()
 
   const trans = withTransition(expanded, { easing: Easing.inOut(Easing.ease) })

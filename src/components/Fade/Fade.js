@@ -2,7 +2,7 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Animated, { Easing } from 'react-native-reanimated'
-import { mix, useTransition } from 'react-native-redash'
+import { mix, useTransition } from 'react-native-redash/lib/module/v1'
 
 const Root = styled(Animated.View)({
   flex: 1,

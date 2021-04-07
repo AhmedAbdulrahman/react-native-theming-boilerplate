@@ -1,7 +1,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import { View, StyleSheet, Dimensions } from 'react-native'
-import { interpolateColor, useScrollHandler } from 'react-native-redash'
+import { interpolateColor, useScrollHandler } from 'react-native-redash/lib/module/v1'
 import Animated, { multiply, divide } from 'react-native-reanimated'
 import { useTheme } from 'styled-components'
 import { Routes } from 'navigation/Routes'

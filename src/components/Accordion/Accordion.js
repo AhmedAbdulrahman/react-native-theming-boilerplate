@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { State } from 'react-native-gesture-handler'
 import Animated, { useCode, cond, eq, set, not } from 'react-native-reanimated'
-import { onGestureEvent } from 'react-native-redash'
+import { onGestureEvent } from 'react-native-redash/lib/module/v1'
 import Collapse from 'components/Collapse'
 import { AccordionProvider } from './AccordionContext'
 
