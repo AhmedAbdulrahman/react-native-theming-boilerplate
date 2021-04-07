@@ -9,7 +9,7 @@ const Root = styled.View((props) => ({
   flex: 1,
   padding: props.theme.spacing(3, 2),
   borderRadius: 4,
-  backgroundColor: '#E9F6EF',
+  backgroundColor: props.theme.palette.success.light.fade(0.8),
 }))
 
 const PriceBreakdown = React.forwardRef(function PriceBreakdown(props, ref) {
