@@ -1,5 +1,5 @@
 const common = {
-  black: '#010F07',
+  black: '#060606',
   white: '#ffffff',
 }
 
