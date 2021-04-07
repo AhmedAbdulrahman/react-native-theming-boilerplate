@@ -1,8 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import styled, { useTheme } from 'styled-components'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import styled from 'styled-components'
 
 const Root = styled.View((props) => ({
   ...props.theme.mixins.container,
@@ -11,25 +10,12 @@ const Root = styled.View((props) => ({
 }))
 
 const Container = (props) => {
-  const { children, right = 'right', left = 'left', top = 'top', ...other } = props
-  const theme = useTheme()
-  return (
-    <SafeAreaView
-      edges={[right, left, top]}
-      style={{
-        flex: 1,
-        backgroundColor: theme.palette.background.default.string(),
-      }}
-    >
-      <Root {...other}>{children}</Root>
-    </SafeAreaView>
-  )
+  const { children, ...other } = props
+  return <Root {...other}>{children}</Root>
 }
 
 Container.propTypes = {
   children: PropTypes.node,
-  right: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  left: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  top: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 }
+
 export default Container
