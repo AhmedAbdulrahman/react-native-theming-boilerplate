@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const STORAGE_KEY = 'SETTINGS'
 

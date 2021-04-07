@@ -1,3 +1,6 @@
 export { default as getContrastRatio } from './getContrastRatio'
 export { default as elevationShadowStyle } from './elevationShadowStyle'
+export { default as renderNode } from './renderNode'
+export { default as nodeType } from './nodeType'
+export { default as ViewPropTypes } from './ViewPropTypes'
 export { loadSettings, saveSettings } from './storage'
