@@ -7,7 +7,7 @@ module.exports = {
   env: {
     es6: true,
   },
-  extends: ['plugin:import/recommended', 'airbnb', 'prettier', 'prettier/react'],
+  extends: ['plugin:import/recommended', 'airbnb', 'prettier'],
   parser: 'babel-eslint', // Specifies the ESLint parser
   parserOptions: {
     ecmaVersion: 8, // Allows for the parsing of modern ECMAScript features
@@ -88,6 +88,7 @@ module.exports = {
     // This rule is great for raising people awareness of what a key is and how it works.
     'react/no-array-index-key': OFF,
     'react/destructuring-assignment': OFF,
+    // 'react/jsx-indent-props': [WARNING, 'tab'],
     // It's buggy
     'react/forbid-prop-types': OFF,
     'react/jsx-curly-brace-presence': OFF,
