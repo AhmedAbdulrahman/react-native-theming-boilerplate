@@ -6,13 +6,14 @@ import { RectButton } from 'react-native-gesture-handler'
 const BaseButton = styled(RectButton)((props) => {
   const { theme, disabled, size, fullWidth, color, variant } = props
   const colors = {
-    default: theme.palette.action.active.string(),
+    default: theme.palette.action.selected.string(),
     primary: theme.palette.primary.main.string(),
     secondary: theme.palette.secondary.main.string(),
     success: theme.palette.success.main.string(),
     info: theme.palette.info.main.string(),
     error: theme.palette.error.main.string(),
     disabled: theme.palette.action.disabledBackground.string(),
+    dark: theme.palette.action.active.string(),
   }
   const variants = {
     contained: {
@@ -22,12 +23,16 @@ const BaseButton = styled(RectButton)((props) => {
       success: { backgroundColor: colors.success },
       info: { backgroundColor: colors.info },
       error: { backgroundColor: colors.error },
+      dark: { backgroundColor: colors.dark },
     },
     outlined: {
       default: { borderColor: colors.default, borderWidth: 1 },
       primary: { borderColor: colors.primary, borderWidth: 1 },
       secondary: { borderColor: colors.secondary, borderWidth: 1 },
       success: { borderColor: colors.success, borderWidth: 1 },
+      info: { borderColor: colors.info, borderWidth: 1 },
+      error: { borderColor: colors.error, borderWidth: 1 },
+      dark: { borderColor: colors.dark, borderWidth: 1 },
     },
     text: {
       default: {},
@@ -38,7 +43,7 @@ const BaseButton = styled(RectButton)((props) => {
   const paddings = {
     small: { paddingVertical: 4, paddingHorizontal: 12 },
     medium: { paddingVertical: 6, paddingHorizontal: 16 },
-    large: { paddingVertical: 14, paddingHorizontal: 28 },
+    large: { paddingVertical: 16, paddingHorizontal: 28 },
   }
 
   return {
@@ -62,7 +67,7 @@ const Text = styled.Text((props) => {
   const variants = {
     contained: {
       default: {
-        color: theme.palette.getContrastText(theme.palette.action.active),
+        color: theme.palette.grey[700].string(),
       },
       primary: {
         color: theme.palette.primary.contrastText.string(),
@@ -79,12 +84,17 @@ const Text = styled.Text((props) => {
       error: {
         color: theme.palette.common.white.string(),
       },
+      dark: {
+        color: theme.palette.getContrastText(theme.palette.action.active),
+      },
     },
     outlined: {
-      default: { color: theme.palette.common.black.string() },
+      default: { color: theme.palette.text.primary.string() },
       primary: { color: theme.palette.primary.main.string() },
       secondary: { color: theme.palette.secondary.main.string() },
+      info: { color: theme.palette.info.main.string() },
       success: { color: theme.palette.success.main.string() },
+      error: { color: theme.palette.error.main.string() },
     },
     text: {
       default: { color: theme.palette.text.primary.string() },

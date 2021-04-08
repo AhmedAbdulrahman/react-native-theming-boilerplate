@@ -11,13 +11,17 @@ const Root = styled.View({})
 const Box = styled.View({
   flex: 1,
   flexDirection: 'row',
-  alignItems: 'flex-end',
+  alignItems: 'center',
 })
 
 const Adornment = styled.View((props) => ({
-  paddingBottom: props.theme.spacing(),
-  ...(props.start && { marginRight: props.theme.spacing() / 2 }),
-  ...(props.end && { marginLeft: props.theme.spacing() / 2 }),
+  position: 'absolute',
+  // right: props.theme.spacing(2),
+  // paddingBottom: props.theme.spacing(),
+  zIndex: 1,
+  ...(props.start && { marginLeft: props.theme.spacing() / 0.6 }),
+  ...(props.end && { marginRight: props.theme.spacing() / 0.6 }),
+  // ...(props.end && { marginLeft: props.theme.spacing() / 2 }),
 }))
 
 const InputContainer = styled.View((props) => ({
@@ -39,12 +43,27 @@ const Input = styled.TextInput((props) => ({
   }),
   textAlignVertical: 'top',
   includeFontPadding: 'false',
+
   ...(props.variant === 'outlined' && {
-    padding: props.theme.spacing(2),
-    borderWidth: 1,
-    borderRadius: 4,
-    borderColor: '#F3F2F2',
-    backgroundColor: '#FBFBFB',
+    padding: props.theme.spacing(1.8),
+
+    borderWidth: 2,
+    borderRadius: props.theme.spacing(0.8),
+
+    borderColor:
+      props.theme.palette.type === 'dark'
+        ? props.theme.palette.common.white.fade(0.95)
+        : props.theme.palette.common.black.fade(0.94),
+    backgroundColor:
+      props.theme.palette.type === 'dark' ? '#151515' : props.theme.palette.common.black.fade(0.98),
+
+    ...(props.startAdornment && {
+      paddingLeft: props.theme.spacing(5),
+    }),
+
+    ...(props.endAdornment && {
+      paddingRight: props.theme.spacing(5),
+    }),
   }),
 }))
 
@@ -140,12 +159,6 @@ const TextField = React.forwardRef(function TextField(props, ref) {
           />
         )}
 
-        {startAdornment && (
-          <Adornment pointerEvents="none" start>
-            {startAdornment}
-          </Adornment>
-        )}
-
         {label && (
           <TextFieldLabel
             focused={labelAnimatedValue.current}
@@ -158,6 +171,11 @@ const TextField = React.forwardRef(function TextField(props, ref) {
           </TextFieldLabel>
         )}
         <Box>
+          {startAdornment && (
+            <Adornment pointerEvents="none" start>
+              {startAdornment}
+            </Adornment>
+          )}
           <Input
             ref={mergeRefs([inputRef, ref])}
             editable={!disabled && editable}
@@ -171,15 +189,16 @@ const TextField = React.forwardRef(function TextField(props, ref) {
             fullWidth={fullWidth}
             variant={variant}
             label={label}
+            startAdornment={Boolean(startAdornment)}
+            endAdornment={Boolean(endAdornment)}
             {...other}
           />
+          {endAdornment && (
+            <Adornment pointerEvents="none" end>
+              {endAdornment}
+            </Adornment>
+          )}
         </Box>
-
-        {endAdornment && (
-          <Adornment pointerEvents="none" end>
-            {endAdornment}
-          </Adornment>
-        )}
       </InputContainer>
 
       {helperText && (
