@@ -12,6 +12,7 @@ const View = styled.View((props) => {
     flexDirection: props.flexDirection,
     justifyContent: flexPrefix(props.justify),
     alignItems: flexPrefix(props.align),
+    flexWrap: props.flexWrap,
   }
 })
 
