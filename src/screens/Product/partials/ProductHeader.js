@@ -18,6 +18,7 @@ const ProductHeader = ({ product }) => {
       <View>
         <ProductToolbar isProductScreen {...product} />
         <Spacing mb={2} mt={1}>
+          {/* eslint-disable-next-line react-native/no-inline-styles */}
           <Flex flexDirection="row" align="center" justify="space-between" style={{ width: 150 }}>
             <Typography color="grey" variant="body2">
               4.3
@@ -33,6 +34,18 @@ const ProductHeader = ({ product }) => {
             <Flex flexDirection="row">
               <Flex flexDirection="row">
                 <Spacing mr={1}>
+                  <SvgIcon
+                    icon="Active"
+                    width={24}
+                    height={28}
+                    color={theme.palette.success.main.string()}
+                    // eslint-disable-next-line react-native/no-inline-styles
+                    style={{
+                      position: 'absolute',
+                      top: -5,
+                      left: -8,
+                    }}
+                  />
                   <SvgIcon icon="Currency" color={theme.palette.success.main.string()} />
                 </Spacing>
                 <Flex>
@@ -45,7 +58,19 @@ const ProductHeader = ({ product }) => {
                 </Flex>
               </Flex>
               <Flex flexDirection="row">
-                <Spacing mr={1}>
+                <Spacing mr={1} ml={-2}>
+                  <SvgIcon
+                    icon="Active"
+                    width={24}
+                    height={28}
+                    color={theme.palette.success.main.string()}
+                    // eslint-disable-next-line react-native/no-inline-styles
+                    style={{
+                      position: 'absolute',
+                      top: -5,
+                      left: -5,
+                    }}
+                  />
                   <SvgIcon icon="Time" color={theme.palette.success.main.string()} />
                 </Spacing>
                 <Flex>
@@ -58,7 +83,7 @@ const ProductHeader = ({ product }) => {
                 </Flex>
               </Flex>
             </Flex>
-            <Button size="medium" color="success" variant="outlined">
+            <Button size="large" color="success" variant="outlined">
               Take away
             </Button>
           </Flex>

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { SectionList, StyleSheet, ActivityIndicator, Platform, View } from 'react-native'
 import { useTheme } from 'styled-components'
 import Animated from 'react-native-reanimated'
-import { onScrollEvent, useValue } from 'react-native-redash'
+import { onScrollEvent, useValue } from 'react-native-redash/lib/module/v1'
 import Media from 'components/Media'
 import ProductMedia from 'containers/ProductMedia'
 import Flex from 'components/Flex'
@@ -13,6 +13,8 @@ import Spacing from 'components/Spacing'
 import Container from 'components/Container'
 import FlatList from 'components/FlatList'
 import { featuredItems } from 'screens/Home/data'
+import IconHeader from 'components/IconHeader'
+import Header from 'components/Header'
 import ProductHeaderImage, { HEADER_IMAGE_HEIGHT } from './partials/ProductHeaderImage'
 import ProductHeader from './partials/ProductHeader'
 
@@ -144,12 +146,32 @@ const Product = (props) => {
         </Container>
       ) : (
         <>
+          <View
+            // eslint-disable-next-line react-native/no-inline-styles
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              zIndex: 2,
+            }}
+          >
+            <Header
+              leftComponent={<IconHeader />}
+              // eslint-disable-next-line react-native/no-inline-styles
+              containerStyle={{
+                paddingTop: 50,
+                backgroundColor: 'transparent',
+              }}
+            />
+          </View>
+          {/* eslint-disable-next-line react-native/no-inline-styles */}
           <View style={{ zIndex: 1 }}>
             <ProductHeaderImage uri={product.uri} {...{ y }} />
           </View>
 
           <Container>
-            <Spacing mr={1} ml={1}>
+            <Spacing>
               <AnimatedSectionList
                 ref={scrollView}
                 style={StyleSheet.absoluteFill}
@@ -161,9 +183,7 @@ const Product = (props) => {
                 stickySectionHeadersEnabled={false}
                 showsVerticalScrollIndicator={false}
                 ListHeaderComponent={
-                  <View
-                    style={{ marginTop: HEADER_IMAGE_HEIGHT * 0.86, ...theme.mixins.container }}
-                  >
+                  <View style={{ marginTop: HEADER_IMAGE_HEIGHT - 10, ...theme.mixins.container }}>
                     <ProductHeader {...{ product }} />
                   </View>
                 }
