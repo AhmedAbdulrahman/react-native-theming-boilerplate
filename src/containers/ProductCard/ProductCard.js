@@ -1,6 +1,5 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import { Pressable } from 'react-native'
 import styled from 'styled-components'
 import ProductMedia from 'containers/ProductMedia'
 import Link from 'navigation/Link'
@@ -18,7 +17,7 @@ const ProductCard = React.forwardRef(function ProductCard(props, ref) {
 
   return (
     <Root ref={ref} {...other}>
-      <Link to={Routes.Product} component={Pressable} params={{ product }}>
+      <Link to={Routes.Product} params={{ product }}>
         <Root {...MediaContaierProps}>
           <Media uri={product.uri} style={{ aspectRatio: 2 / 3 }} {...MediaProps} />
         </Root>

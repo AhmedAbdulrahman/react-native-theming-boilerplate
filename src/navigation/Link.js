@@ -1,5 +1,6 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
+import { Pressable } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import Typography from 'components/Typography'
 
@@ -11,6 +12,7 @@ const Link = React.forwardRef(function Link(props, ref) {
     params = {},
     accessibilityRole = 'link',
     children,
+    PressableProps = {},
     ...other
   } = props
   const navigation = useNavigation()
@@ -32,9 +34,11 @@ const Link = React.forwardRef(function Link(props, ref) {
   )
 
   return (
-    <Component ref={ref} onPress={handlePress} accessibilityRole={accessibilityRole} {...other}>
-      {children}
-    </Component>
+    <Pressable onPress={handlePress} {...PressableProps}>
+      <Component ref={ref} accessibilityRole={accessibilityRole} {...other}>
+        {children}
+      </Component>
+    </Pressable>
   )
 })
 Link.propTypes = {
@@ -42,6 +46,7 @@ Link.propTypes = {
   to: PropTypes.string,
   onPress: PropTypes.func,
   params: PropTypes.object,
+  PressableProps: PropTypes.object,
   children: PropTypes.node,
   accessibilityRole: PropTypes.string,
 }
