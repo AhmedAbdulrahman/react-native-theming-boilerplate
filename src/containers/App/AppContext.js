@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { loadSettings, saveSettings } from 'utils'
 
 const AppContext = React.createContext({})
-const AppHandlers = React.createContext({})
+const AppHandlersContext = React.createContext({})
 
 const AppProvider = (props) => {
   const { children } = props
@@ -35,21 +35,17 @@ const AppProvider = (props) => {
     getSettings()
   })
 
-  const contextHandlers = React.useMemo(() => ({ onThemeToggle, setIsLoading }), [
+  const appHandlersContext = React.useMemo(() => ({ onThemeToggle, setIsLoading }), [
     onThemeToggle,
     setIsLoading,
   ])
 
-  const context = React.useMemo(() => ({ ...contextHandlers, isLoading, currentTheme }), [
-    contextHandlers,
-    isLoading,
-    currentTheme,
-  ])
+  const appContext = { isLoading, currentTheme, ...appHandlersContext }
 
   return (
-    <AppContext.Provider value={context}>
-      <AppHandlers.Provider value={contextHandlers}>{children}</AppHandlers.Provider>
-    </AppContext.Provider>
+    <AppHandlersContext.Provider value={appHandlersContext}>
+      <AppContext.Provider value={appContext}>{children}</AppContext.Provider>
+    </AppHandlersContext.Provider>
   )
 }
 
@@ -58,7 +54,7 @@ export const useApp = () => {
 }
 
 export const useAppHandlers = () => {
-  return React.useContext(AppHandlers)
+  return React.useContext(AppHandlersContext)
 }
 
 AppProvider.propTypes = {
