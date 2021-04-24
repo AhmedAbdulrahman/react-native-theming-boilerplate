@@ -11,7 +11,7 @@ const HeroItem = (props) => {
   const theme = useTheme()
 
   return (
-    <Spacing key={item} mb={3}>
+    <Spacing key={item} mb={4}>
       <ProductCard
         product={item}
         style={{

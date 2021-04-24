@@ -50,7 +50,7 @@ const ProductFlatList = (props) => {
       })
 
       return (
-        <Spacing key={item} mb={3}>
+        <Spacing key={item} mb={4}>
           <ProductCard
             type="normal"
             style={{
@@ -62,8 +62,8 @@ const ProductFlatList = (props) => {
             MediaContaierProps={{
               style: [
                 {
-                  height: ITEM_FULLSIZE,
-                  width: IMAGE_SIZE * 1.2,
+                  height: ITEM_FULLSIZE * 1.2,
+                  width: IMAGE_SIZE * 1.4,
                   overflow: 'hidden',
                   borderRadius: theme.spacing(1.2),
                 },
@@ -97,6 +97,7 @@ const ProductFlatList = (props) => {
       scrollEventThrottle={16}
       decelerationRate="fast"
       showsHorizontalScrollIndicator={false}
+      // eslint-disable-next-line react-native/no-inline-styles
       contentContainerStyle={{ alignItems: 'center' }}
       renderItem={section.type === 'normal' ? renderListItem : renderHeroItem}
       snapToInterval={section.type === 'normal' ? ITEM_FULLSIZE : FULLSIZE}
