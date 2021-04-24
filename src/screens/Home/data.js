@@ -1,6 +1,6 @@
 import faker from 'faker'
 
-export const data = [...Array(10).keys()].map((i) => {
+export const data = Array.from({ length: 10 }, (_, i) => {
   return {
     key: `section-${i}`,
     title: faker.commerce.productName(1),
@@ -9,7 +9,7 @@ export const data = [...Array(10).keys()].map((i) => {
     type: i % 3 === 0 ? 'hero' : 'normal',
     horizontal: i % 3 === 0 ? 'hero' : 'normal',
     // this is data for renderItem FlatList
-    sectionContent: [...Array(10).keys()].map((j) => {
+    sectionContent: Array.from({ length: 10 }, (idx, j) => {
       return {
         key: `section-${i}-row-${j}`,
         title: faker.commerce.productName().substring(0, 15),
@@ -53,3 +53,40 @@ export const featuredItems = [...Array(2).keys()].map((i) => {
     }),
   }
 })
+
+export const filterOptionDefaults = [
+  {
+    heading: 'Categories',
+    name: 'categories',
+    options: [
+      { id: 0, key: 'soups', label: 'Soups' },
+      { id: 1, key: 'breakfast', label: 'Breakfast' },
+      { id: 2, key: 'dinner', label: 'Dinner' },
+      { id: 3, key: 'burgers', label: 'Burgers' },
+      { id: 4, key: 'brunch', label: 'Brunch' },
+      { id: 5, key: 'chinese', label: 'Chinese' },
+      { id: 6, key: 'pizza', label: 'Pizza' },
+      { id: 7, key: 'salads', label: 'Salads' },
+    ],
+  },
+  {
+    heading: 'Dietary',
+    name: 'dietary',
+    options: [
+      { id: 0, key: 'any', label: 'Any' },
+      { id: 1, key: 'vegetarian', label: 'Vegetarian' },
+      { id: 2, key: 'vegan', label: 'Vegan' },
+      { id: 3, key: 'gluten-free', label: 'Gluten-Free' },
+    ],
+  },
+  {
+    heading: 'Price Range',
+    name: 'price',
+    options: [
+      { id: 0, key: '$', label: '$' },
+      { id: 1, key: '$$', label: '$$' },
+      { id: 2, key: '$$$', label: '$$$' },
+      { id: 3, key: '$$$$', label: '$$$$' },
+    ],
+  },
+]
