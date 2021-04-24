@@ -1,8 +1,8 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import { SectionList, RefreshControl } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components'
-import Constants from 'expo-constants'
 import ProductFlatList from 'containers/ProductFlatList'
 import Link from 'navigation/Link'
 import { Routes } from 'navigation/Routes'
@@ -28,6 +28,7 @@ const SectionHeader = styled.View((props) => {
 const ProductGridSection = (props) => {
   const { products, ...other } = props
   const theme = useTheme()
+  const insets = useSafeAreaInsets()
 
   const [refreshing, setRefreshing] = React.useState(false)
   const keyExtractor = React.useCallback((item) => item?.key, [])
@@ -46,7 +47,7 @@ const ProductGridSection = (props) => {
   const renderSectionHeader = React.useCallback(
     ({ section }) => (
       <SectionHeader key={section}>
-        <Typography color="dark" variant="h6" gutterTop>
+        <Typography color="dark" variant="subhead" gutterTop>
           {section.title}
         </Typography>
         {section.type === 'normal' && (
@@ -75,7 +76,7 @@ const ProductGridSection = (props) => {
           />
         }
         style={{
-          paddingTop: Constants.statusBarHeight * 0.4,
+          paddingTop: (insets.top / 2) * 0.3,
         }}
         sections={products}
         renderItem={renderSection}
