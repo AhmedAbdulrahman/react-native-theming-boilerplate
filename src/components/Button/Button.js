@@ -17,13 +17,17 @@ const BaseButton = styled(RectButton)((props) => {
   }
   const variants = {
     contained: {
-      default: { backgroundColor: colors.default },
-      primary: { backgroundColor: colors.primary },
-      secondary: { backgroundColor: colors.secondary },
-      success: { backgroundColor: colors.success },
-      info: { backgroundColor: colors.info },
-      error: { backgroundColor: colors.error },
-      dark: { backgroundColor: colors.dark },
+      default: { backgroundColor: colors.default, borderColor: colors.default, borderWidth: 1 },
+      primary: { backgroundColor: colors.primary, borderColor: colors.primary, borderWidth: 1 },
+      secondary: {
+        backgroundColor: colors.secondary,
+        borderColor: colors.secondary,
+        borderWidth: 1,
+      },
+      success: { backgroundColor: colors.success, borderColor: colors.success, borderWidth: 1 },
+      info: { backgroundColor: colors.info, borderColor: colors.info, borderWidth: 1 },
+      error: { backgroundColor: colors.error, borderColor: colors.error, borderWidth: 1 },
+      dark: { backgroundColor: colors.dark, borderColor: colors.dark, borderWidth: 1 },
     },
     outlined: {
       default: { borderColor: colors.default, borderWidth: 1 },
@@ -106,16 +110,17 @@ const Text = styled.Text((props) => {
   const fontSizes = {
     small: 12,
     medium: theme.typography.button.fontSize,
-    large: theme.typography.button.fontSize,
+    large: 16,
   }
 
   return {
-    ...variants[variant][color],
-    ...(disabled && { color: theme.palette.action.disabled.string() }),
-    ...theme.typography.button,
-    ...(disableUppercase && { textTransform: 'none' }),
     fontSize: fontSizes[size],
     lineHeight: `${fontSizes[size] * 1.25}px`,
+    textTransform: 'uppercase',
+    // ...theme.typography.button,
+    ...variants[variant][color],
+    ...(disabled && { color: theme.palette.action.disabled.string() }),
+    ...(disableUppercase && { textTransform: 'none' }),
   }
 })
 
