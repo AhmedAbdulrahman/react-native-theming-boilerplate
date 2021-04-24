@@ -9,10 +9,12 @@ import Typography from 'components/Typography'
 import Container from 'components/Container'
 import Spacing from 'components/Spacing'
 import SvgIcon from 'components/SvgIcon'
+import SafeAreaView from 'components/SafeAreaView'
 import { Routes } from 'navigation/Routes'
 
 const OrderMedia = styled(Media)(() => ({
-  width: 64,
+  width: 100,
+  height: '100%',
 }))
 
 const OrderListItem = styled(ListItemLink)(() => ({
@@ -37,52 +39,56 @@ const orderData = [...Array(10).keys()].map((i) => {
 const Orders = () => {
   const theme = useTheme()
   return (
-    <Container>
-      <FlatList
-        data={orderData}
-        showsVerticalScrollIndicator={false}
-        renderItem={({ item }) => (
-          <OrderListItem disableGutters divider to={Routes.OrderDetails}>
-            <OrderMedia style={{ aspectRatio: 64 / 96 }} uri={item.uri} />
-            <Spacing ml={2}>
-              <Flex>
-                <Typography color="dark" variant="body2">
-                  Order No {item.orderNumber}
-                </Typography>
-                <Typography color="dark" variant="body2">
-                  {item.numProducts} Item
-                </Typography>
-                <Typography color="dark" variant="body1">
-                  {item.total} SEK
-                </Typography>
-                {item.completed && (
-                  <Flex flexDirection="row" align="center">
-                    <SvgIcon icon="Complete" color={theme.palette.success.main.string()} />
+    <SafeAreaView edges={['top']}>
+      <Container>
+        <FlatList
+          data={orderData}
+          showsVerticalScrollIndicator={false}
+          renderItem={({ item }) => (
+            <OrderListItem disableGutters divider to={Routes.OrderDetails}>
+              <Spacing mt={1} mb={2}>
+                <OrderMedia uri={item.uri} />
+              </Spacing>
+              <Spacing ml={2}>
+                <Flex>
+                  <Typography color="dark" variant="body2">
+                    Order No {item.orderNumber}
+                  </Typography>
+                  <Typography color="dark" variant="body2">
+                    {item.numProducts} Item
+                  </Typography>
+                  <Typography color="dark" variant="body1">
+                    {item.total} SEK
+                  </Typography>
+                  {item.completed && (
+                    <Flex flexDirection="row" align="center">
+                      <SvgIcon icon="Complete" color={theme.palette.success.main.string()} />
 
-                    <Typography variant="caption">Completed</Typography>
-                  </Flex>
-                )}
+                      <Typography variant="caption">Completed</Typography>
+                    </Flex>
+                  )}
+                </Flex>
+                <Typography variant="caption" color="textSecondary">
+                  Completed {item.date}.
+                </Typography>
+              </Spacing>
+            </OrderListItem>
+          )}
+          ListHeaderComponent={
+            <Spacing mt={3} mr={4} mb={4}>
+              <Flex flex={1}>
+                <Typography color="dark" variant="h4" paragraph>
+                  Your Orders
+                </Typography>
+                <Typography color="grey" variant="body1">
+                  Update your settings like notifications, payments, profile edit etc.
+                </Typography>
               </Flex>
-              <Typography variant="caption" color="textSecondary">
-                Completed {item.date}.
-              </Typography>
             </Spacing>
-          </OrderListItem>
-        )}
-        ListHeaderComponent={
-          <Spacing mt={3} mr={4} mb={4}>
-            <Flex>
-              <Typography color="dark" variant="h4" paragraph>
-                Your Orders
-              </Typography>
-              <Typography color="grey" variant="body1">
-                Update your settings like notifications, payments, profile edit etc.
-              </Typography>
-            </Flex>
-          </Spacing>
-        }
-      />
-    </Container>
+          }
+        />
+      </Container>
+    </SafeAreaView>
   )
 }
 
