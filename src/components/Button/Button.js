@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { RectButton } from 'react-native-gesture-handler'
 
 const BaseButton = styled(RectButton)((props) => {
-  const { theme, disabled, size, fullWidth, color, variant } = props
+  const { theme, disabled, size, fullWidth, color, circle, variant } = props
   const colors = {
     default: theme.palette.action.selected.string(),
     primary: theme.palette.primary.main.string(),
@@ -52,17 +52,28 @@ const BaseButton = styled(RectButton)((props) => {
 
   return {
     ...variants[variant][color],
-    ...(disabled && variant === 'contained' && { backgroundColor: colors.disabled }),
+    ...(disabled &&
+      variant === 'contained' && {
+        backgroundColor: colors.disabled,
+        borderColor: colors.disabled,
+      }),
     ...(disabled && variant === 'outlined' && { borderColor: colors.disabled }),
     ...(fullWidth && { width: '100%' }),
     minWidth: 64,
+    borderRadius: theme.spacing(0.4),
     ...paddings[size],
+    ...(circle && {
+      width: 70,
+      height: 70,
+      borderRadius: 35,
+      paddingVertical: 15,
+      paddingHorizontal: 5,
+    }),
     display: 'flex',
     alignSelf: fullWidth ? 'auto' : 'center',
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
-    borderRadius: theme.spacing(0.4),
   }
 })
 
