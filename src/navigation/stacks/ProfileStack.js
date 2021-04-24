@@ -4,7 +4,6 @@ import styled, { useTheme } from 'styled-components'
 import ProfileScreen from 'screens/Member/Profile'
 import ProfileDetailsScreen from 'screens/Member/ProfileDetails'
 import ProfileSettingsScreen from 'screens/Member/ProfileSettings'
-import OrderDetailsScreen from 'screens/Member/OrderDetails'
 import OrdersScreen from 'screens/Member/Orders'
 import { Routes } from 'navigation/Routes'
 import IconButton, { Container } from 'components/IconButton'
@@ -19,6 +18,7 @@ const HeaderButton = styled(Link)((props) => ({
 
 const ProfileStackScreen = () => {
   const theme = useTheme()
+
   return (
     <ProfileStack.Navigator
       screenOptions={{
@@ -68,14 +68,6 @@ const ProfileStackScreen = () => {
           headerBackTitleVisible: false,
         }}
         component={OrdersScreen}
-      />
-      <ProfileStack.Screen
-        name={Routes.OrderDetails}
-        options={{
-          headerTitle: 'Order number 10000',
-          headerBackTitleVisible: false,
-        }}
-        component={OrderDetailsScreen}
       />
     </ProfileStack.Navigator>
   )
