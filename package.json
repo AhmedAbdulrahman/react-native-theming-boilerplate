@@ -12,6 +12,7 @@
     "prestorybook": "rnstl"
   },
   "dependencies": {
+    "@expo/metro-config": "^0.1.64",
     "@react-native-async-storage/async-storage": "^1.14.1",
     "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/bottom-tabs": "^5.11.8",
