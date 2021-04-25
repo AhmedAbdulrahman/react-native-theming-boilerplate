@@ -1,27 +1,25 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import { NavigationContainer, DefaultTheme } from '@react-navigation/native'
-import { AppLoading } from 'expo'
-import { AsyncStorage } from 'react-native'
-import Constants from 'expo-constants'
 import { ThemeProvider } from 'styled-components'
+import { InitialState, NavigationContainer, DefaultTheme } from '@react-navigation/native'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
+import Constants from 'expo-constants'
 import { StatusBar } from 'expo-status-bar'
 import { useLoadAssets } from 'hooks'
 import { useApp } from 'containers/App/AppContext'
-import { fonts } from 'modules'
 import createTheme from 'styles/createTheme'
+import { ModalProvider } from 'containers/Modal'
 
 const NAVIGATION_STATE_KEY = `NAVIGATION_STATE_KEY-${Constants.manifest.sdkVersion}`
 
 const App = React.forwardRef(function Navigation(props, ref) {
-  const { NavigationContainerProps, assets, children } = props
-
+  const { assets, fonts, children } = props
   const [isNavigationReady, setIsNavigationReady] = React.useState(!__DEV__)
-  const [initialState, setInitialState] = React.useState()
+  const [initialState, setInitialState] = React.useState(InitialState)
 
-  const { ready } = useLoadAssets(assets, fonts)
   const { currentTheme } = useApp()
+  const ready = useLoadAssets(assets || [], fonts || {})
 
   const theme = createTheme({
     palette: { type: currentTheme === 'light' ? 'light' : 'dark' },
@@ -56,22 +54,18 @@ const App = React.forwardRef(function Navigation(props, ref) {
   )
 
   if (!ready || !isNavigationReady) {
-    return <AppLoading />
+    return null
   }
 
   return (
     <ThemeProvider {...{ theme }}>
       <SafeAreaProvider>
-        <StatusBar style={statusBarColor} />
-        <NavigationContainer
-          ref={ref}
-          independent
-          theme={customTheme}
-          {...NavigationContainerProps}
-          {...{ onStateChange, initialState }}
-        >
-          {children}
-        </NavigationContainer>
+        <ModalProvider>
+          <StatusBar style={statusBarColor} />
+          <NavigationContainer ref={ref} theme={customTheme} {...{ onStateChange, initialState }}>
+            {children}
+          </NavigationContainer>
+        </ModalProvider>
       </SafeAreaProvider>
     </ThemeProvider>
   )
@@ -79,9 +73,7 @@ const App = React.forwardRef(function Navigation(props, ref) {
 
 App.propTypes = {
   children: PropTypes.node,
-  NavigationContainerProps: PropTypes.object,
-  TabNavigationProps: PropTypes.object,
+  fonts: PropTypes.object,
   assets: PropTypes.array,
-  theme: PropTypes.object,
 }
-export default React.memo(App)
+export default App
