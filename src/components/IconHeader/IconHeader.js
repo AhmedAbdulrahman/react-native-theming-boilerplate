@@ -12,7 +12,7 @@ const IconHeader = ({ onPress, ...other }) => {
 
   return (
     <TouchableOpacity onPress={handleClick} style={styles.container} {...other}>
-      <SvgIcon icon="ChevronLeft" color={theme.palette.text.primary.string()} />
+      <SvgIcon icon="ChevronLeft" color={theme.palette.common.white.string()} />
     </TouchableOpacity>
   )
 }
