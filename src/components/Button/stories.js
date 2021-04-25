@@ -18,21 +18,26 @@ const ButtonStory = () => {
       <Button color="secondary">Color secondary</Button>
       <Button color="success">Color secondary</Button>
       <Button size="small">Size small</Button>
+      <Button size="medium">Size medium</Button>
       <Button size="large">Size large</Button>
-      <Button variant="outlined">Variant Outlined</Button>
+      <Button variant="outlined">Default</Button>
       <Button variant="outlined" color="primary">
-        Outlined primary
+        Primary
       </Button>
       <Button variant="outlined" color="secondary">
-        Outlined secondary
+        Secondary
       </Button>
       <Button variant="text" color="primary">
         Text Primary
       </Button>
-      <Button fullWidth>Full width</Button>
-      <Button disabled>Disabled</Button>
-      <Button variant="outlined" disabled>
-        Disabled outlined
+      <Button fullWidth color="primary">
+        Full width
+      </Button>
+      <Button disabled enabled={false} variant="contained">
+        Disabled
+      </Button>
+      <Button disabled enabled={false} variant="outlined">
+        Disabled
       </Button>
     </Flex>
   )

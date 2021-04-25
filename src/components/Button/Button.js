@@ -28,9 +28,10 @@ const BaseButton = styled(RectButton)((props) => {
       info: { backgroundColor: colors.info, borderColor: colors.info, borderWidth: 1 },
       error: { backgroundColor: colors.error, borderColor: colors.error, borderWidth: 1 },
       dark: { backgroundColor: colors.dark, borderColor: colors.dark, borderWidth: 1 },
+      disabled: { backgroundColor: colors.disabled, borderColor: colors.disabled, borderWidth: 1 },
     },
     outlined: {
-      default: { borderColor: colors.default, borderWidth: 1 },
+      default: { borderColor: colors.dark, borderWidth: 1 },
       primary: { borderColor: colors.primary, borderWidth: 1 },
       secondary: { borderColor: colors.secondary, borderWidth: 1 },
       success: { borderColor: colors.success, borderWidth: 1 },
@@ -46,7 +47,7 @@ const BaseButton = styled(RectButton)((props) => {
   }
   const paddings = {
     small: { paddingVertical: 4, paddingHorizontal: 12 },
-    medium: { paddingVertical: 6, paddingHorizontal: 16 },
+    medium: { paddingVertical: 8, paddingHorizontal: 18 },
     large: { paddingVertical: 16, paddingHorizontal: 28 },
   }
 
@@ -85,10 +86,10 @@ const Text = styled.Text((props) => {
         color: theme.palette.grey[700].string(),
       },
       primary: {
-        color: theme.palette.primary.contrastText.string(),
+        color: theme.palette.common.white.string(),
       },
       secondary: {
-        color: theme.palette.primary.contrastText.string(),
+        color: theme.palette.common.white.string(),
       },
       info: {
         color: theme.palette.common.white.string(),
