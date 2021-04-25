@@ -1,6 +1,6 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-import { LoadAssets } from 'modules'
+import { LogBox } from 'react-native'
 import AppProvider from 'containers/App'
 import Button from 'components/Button'
 import Flex from 'components/Flex'
@@ -14,34 +14,32 @@ const withStorybook = (Wrapped) => {
       return (
         <ThemeProvider {...{ theme }}>
           <AppProvider>
-            <LoadAssets theme={theme}>
-              <Flex flexDirection="row">
-                <Flex justify="center" align="center">
-                  <Button
-                    size="medium"
-                    color="primary"
-                    onPress={() => {
-                      // eslint-disable-next-line no-console
-                      console.disableYellowBox = true
-                      setStorybook(true)
-                    }}
-                  >
-                    Design System
-                  </Button>
-                </Flex>
-                <Flex justify="center" align="center">
-                  <Button
-                    size="medium"
-                    color="secondary"
-                    onPress={() => {
-                      setStorybook(false)
-                    }}
-                  >
-                    Run Application
-                  </Button>
-                </Flex>
+            <Flex flexDirection="row">
+              <Flex justify="center" align="center">
+                <Button
+                  size="medium"
+                  color="primary"
+                  onPress={() => {
+                    // eslint-disable-next-line no-console
+                    LogBox.ignoreAllLogs(true)
+                    setStorybook(true)
+                  }}
+                >
+                  Design System
+                </Button>
               </Flex>
-            </LoadAssets>
+              <Flex justify="center" align="center">
+                <Button
+                  size="medium"
+                  color="secondary"
+                  onPress={() => {
+                    setStorybook(false)
+                  }}
+                >
+                  Run Application
+                </Button>
+              </Flex>
+            </Flex>
           </AppProvider>
         </ThemeProvider>
       )

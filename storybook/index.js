@@ -3,7 +3,6 @@ import { getStorybookUI, configure, addDecorator, addParameters } from '@storybo
 import { withKnobs } from '@storybook/addon-knobs'
 import { ThemeProvider } from 'styled-components'
 import { create } from '@storybook/theming'
-import { LoadAssets } from 'modules'
 import theme from 'styles/theme/light'
 import { loadStories } from './storyLoader'
 
@@ -31,11 +30,7 @@ addDecorator((storyFn) => {
   // Register story knobs before global knobs.
   const story = storyFn()
 
-  return (
-    <ThemeProvider theme={theme}>
-      <LoadAssets>{story}</LoadAssets>
-    </ThemeProvider>
-  )
+  return <ThemeProvider theme={theme}>{story}</ThemeProvider>
 })
 
 // import stories
