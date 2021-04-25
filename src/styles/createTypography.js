@@ -5,9 +5,9 @@ const caseAllCaps = {
 export default function createTypography(typographyOptions) {
   const {
     fontFamilyPrimary = {
-      regular: 'SFProText-Regular',
-      semibold: 'SFProText-Semibold',
-      bold: 'SFProText-Bold',
+      regular: 'SFProDisplay-Regular',
+      semibold: 'SFProDisplay-Semibold',
+      bold: 'SFProDisplay-Bold',
     },
     baseFontSize = 14, // px
     fontWeightLight = '300',
@@ -30,20 +30,20 @@ export default function createTypography(typographyOptions) {
   })
 
   const variants = {
-    h1: buildVariant(fontFamilyPrimary.regular, 75, 1, -0.03, caseAllCaps),
-    h2: buildVariant(fontFamilyPrimary.regular, 46, 1.1, -0.03, caseAllCaps),
-    h3: buildVariant(fontFamilyPrimary.regular, 40, 1.1, -0.03, caseAllCaps),
+    h1: buildVariant(fontFamilyPrimary.regular, 34, 1, -0.03),
+    h2: buildVariant(fontFamilyPrimary.regular, 28, 1.1, -0.03),
+    h3: buildVariant(fontFamilyPrimary.semibold, 24, 1.1, -0.03),
     h4: buildVariant(fontFamilyPrimary.bold, 32, 1.2, -0.03),
-    h5: buildVariant(fontFamilyPrimary.semibold, 24, 1.1, 0.2, caseAllCaps),
+    h5: buildVariant(fontFamilyPrimary.semibold, 24, 1.1, 0.2),
     h6: buildVariant(fontFamilyPrimary.semibold, 18, 1.1, -0.03),
     h7: buildVariant(fontFamilyPrimary.semibold, 17, 1.1, -0.03),
-    subtitle1: buildVariant(fontFamilyPrimary.semibold, 16, 1.3, -0.02),
-    subtitle2: buildVariant(fontFamilyPrimary.semibold, 14, 1.3, -0.01),
+    headline: buildVariant(fontFamilyPrimary.semibold, 30, 1.3, -0.02),
+    subhead: buildVariant(fontFamilyPrimary.semibold, 20, 1.3, -0.01),
     body1: buildVariant(fontFamilyPrimary.regular, 16, 1.3, -0.02),
     body2: buildVariant(fontFamilyPrimary.regular, 14, 1.3, -0.01),
-    button: buildVariant(fontFamilyPrimary.semibold, 14, 1.25, -0.03, caseAllCaps),
+    button: buildVariant(fontFamilyPrimary.semibold, 14, 1.25, -0.03),
     caption: buildVariant(fontFamilyPrimary.regular, 12, 1.4, -0.01),
-    overline: buildVariant(fontFamilyPrimary.bold, 12, 1.4, -0.01, caseAllCaps),
+    overline: buildVariant(fontFamilyPrimary.bold, 12, 1.4, -0.01),
   }
 
   return {
