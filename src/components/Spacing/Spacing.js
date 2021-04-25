@@ -1,6 +1,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import { useTheme } from 'styled-components'
+import { View } from 'react-native'
 
 const styleMap = {
   m: 'margin',
@@ -19,38 +20,44 @@ const styleMap = {
 }
 
 const Spacing = (props) => {
-  const { children: childrenProp } = props
+  const { children: childrenProp, container = false } = props
   const theme = useTheme()
+  const styleKeys = Object.keys(props).filter(
+    (key) => key.search(/(mt|mr|mb|ml|pt|pr|pb|pl|fd|jc|ai|fw)/g) !== -1,
+  )
+
+  const getStyle = (child) => {
+    return styleKeys.reduce(
+      (acc, key) => {
+        const type = key[0]
+        const side = key[1]
+
+        acc[`${styleMap[type]}${styleMap[side]}`] = ['f', 'j', 'a'].includes(type)
+          ? props[key]
+          : theme.spacing(props[key])
+        return acc
+      },
+
+      container ? { ...props?.style } : { ...child?.props.style },
+    )
+  }
 
   const children =
     React.Children.map(childrenProp, (child) => {
       if (!React.isValidElement(child)) {
         return child
       }
-      const styleKeys = Object.keys(props).filter(
-        (key) => key.search(/(mt|mr|mb|ml|pt|pr|pb|pl|fd|jc|ai|fw)/g) !== -1,
-      )
-      const style = styleKeys.reduce(
-        (acc, key) => {
-          const type = key[0]
-          const side = key[1]
 
-          acc[`${styleMap[type]}${styleMap[side]}`] = ['f', 'j', 'a'].includes(type)
-            ? props[key]
-            : theme.spacing(props[key])
-          return acc
-        },
-
-        { ...child?.props.style },
-      )
-      return React.cloneElement(child, { style })
+      return React.cloneElement(child, !container && { style: getStyle(child) })
     }) ?? null
 
-  return <>{children}</>
+  return container ? <View {...getStyle()}>{children}</View> : <>{children}</>
 }
 
 Spacing.propTypes = {
   children: PropTypes.node,
+  container: PropTypes.bool,
+  style: PropTypes.object,
 }
 
 export default Spacing
