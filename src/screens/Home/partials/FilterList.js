@@ -1,12 +1,14 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import { View, TouchableOpacity } from 'react-native'
+import { TouchableOpacity } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import Button from 'components/Button'
+import Container from 'components/Container'
+import Flex from 'components/Flex'
+import Header from 'components/Header'
+import IconButton from 'components/IconButton'
 import Modal from 'components/Modal'
 import Spacing from 'components/Spacing'
-import Button from 'components/Button'
-import IconButton from 'components/IconButton'
-import Flex from 'components/Flex'
 import Typography from 'components/Typography'
 
 const FilterList = React.forwardRef(function FilterList(props, ref) {
@@ -26,29 +28,25 @@ const FilterList = React.forwardRef(function FilterList(props, ref) {
     filterOption.price.length > 0
 
   return (
-    <Modal
-      leftComponent={
-        <TouchableOpacity onPress={handleModalHide}>
-          <Spacing mt={1}>
+    <Modal ref={ref} presentationStyle="overFullScreen" {...other}>
+      <Header
+        leftComponent={
+          <TouchableOpacity onPress={handleModalHide}>
             <IconButton icon="Close" />
-          </Spacing>
-        </TouchableOpacity>
-      }
-      centerComponent={<Typography variant="h6">Filters</Typography>}
-      ref={ref}
-      presentationStyle="overFullScreen"
-      {...other}
-    >
-      <Flex>
-        {filters.map((filter, idx) => {
-          const { heading, name } = filter
+          </TouchableOpacity>
+        }
+        centerComponent={<Typography variant="h6">Filters</Typography>}
+      />
+      <Container>
+        <Flex>
+          {filters.map((filter, idx) => {
+            const { heading, name } = filter
 
-          const value = filterOption[name] || []
+            const value = filterOption[name] || []
 
-          return (
-            <React.Fragment key={idx}>
-              <Spacing mt={1} mb={2} fd="row" jc="space-between" ai="center">
-                <View>
+            return (
+              <Spacing container key={idx}>
+                <Spacing container mt={1} mb={2} fd="row" jc="space-between" ai="center">
                   <Typography variant="h6" uppercase>
                     {heading}
                   </Typography>
@@ -61,11 +59,9 @@ const FilterList = React.forwardRef(function FilterList(props, ref) {
                   >
                     Clear All
                   </Typography>
-                </View>
-              </Spacing>
+                </Spacing>
 
-              <Spacing mr={2} mb={3} fd="row" fw="wrap">
-                <View>
+                <Spacing container mr={2} mb={3} fd="row" fw="wrap">
                   {filter.options?.map((option) => {
                     const selected = value.includes(option.key)
 
@@ -75,7 +71,7 @@ const FilterList = React.forwardRef(function FilterList(props, ref) {
                           size="large"
                           circle={name === 'price'}
                           color={selected ? 'success' : 'default'}
-                          variant={selected ? 'contained' : 'outlined'}
+                          variant="contained"
                           onPress={() => {
                             handleFilterChange(name, option.key)
                           }}
@@ -90,24 +86,24 @@ const FilterList = React.forwardRef(function FilterList(props, ref) {
                       </Spacing>
                     )
                   })}
-                </View>
+                </Spacing>
               </Spacing>
-            </React.Fragment>
-          )
-        })}
-        <Button
-          enabled={isFilterActive}
-          disabled={!isFilterActive}
-          size="large"
-          fullWidth
-          color="success"
-          // eslint-disable-next-line react-native/no-inline-styles
-          style={{ position: 'absolute', bottom: insets.bottom }}
-          onPress={handleModalHide}
-        >
-          Apply filters
-        </Button>
-      </Flex>
+            )
+          })}
+          <Button
+            enabled={isFilterActive}
+            disabled={!isFilterActive}
+            size="large"
+            fullWidth
+            color="success"
+            // eslint-disable-next-line react-native/no-inline-styles
+            style={{ position: 'absolute', bottom: insets.bottom }}
+            onPress={handleModalHide}
+          >
+            Apply filters
+          </Button>
+        </Flex>
+      </Container>
     </Modal>
   )
 })
