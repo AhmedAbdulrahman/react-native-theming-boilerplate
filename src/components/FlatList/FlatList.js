@@ -11,7 +11,7 @@ const BaseFlatList = styled.FlatList((props) => {
   }
 })
 
-const FlatList = React.forwardRef(function Media(props, ref) {
+const FlatList = React.forwardRef(function FlatList(props, ref) {
   const { component = BaseFlatList, animated = false, ...other } = props
   const Component = animated ? Animated.createAnimatedComponent(component) : component
 
