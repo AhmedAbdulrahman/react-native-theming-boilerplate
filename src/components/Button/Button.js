@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { RectButton } from 'react-native-gesture-handler'
 
 const BaseButton = styled(RectButton)((props) => {
-  const { theme, disabled, size, fullWidth, color, circle, variant } = props
+  const { theme, disabled, size, fullWidth, color, circle, variant, borderRadius = 0.4 } = props
   const colors = {
     default: theme.palette.action.selected.string(),
     primary: theme.palette.primary.main.string(),
@@ -61,7 +61,7 @@ const BaseButton = styled(RectButton)((props) => {
     ...(disabled && variant === 'outlined' && { borderColor: colors.disabled }),
     ...(fullWidth && { width: '100%' }),
     minWidth: 64,
-    borderRadius: theme.spacing(0.4),
+    borderRadius: theme.spacing(borderRadius),
     ...paddings[size],
     ...(circle && {
       width: 70,

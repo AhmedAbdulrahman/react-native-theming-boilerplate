@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const TypographyColor = {
-  erro: 'error',
+  error: 'error',
   grey: 'grey',
   primary: 'primary',
   secondary: 'secondary',
@@ -22,7 +22,7 @@ function getColor(color, palette) {
     case TypographyColor.success:
       return palette.success.main
     case TypographyColor.grey:
-      return palette.text.secondary
+      return palette.grey[900]
     case TypographyColor.textPrimary:
       return palette.text.primary
     case TypographyColor.textSecondary:
@@ -68,7 +68,7 @@ const Text = styled.Text((props) => {
     margin: 0,
     color: color
       ? getColor(color, theme.palette).rgb().string()
-      : theme.palette.text.primary.rgb().string(),
+      : theme.palette.common.black.string(),
     textAlign: align,
     marginBottom,
     marginTop,

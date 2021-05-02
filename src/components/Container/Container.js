@@ -3,11 +3,14 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-const Root = styled.View((props) => ({
-  ...props.theme.mixins.container,
-  flex: 1,
-  backgroundColor: props.theme.palette.background.default.string(),
-}))
+const Root = styled.View((props) => {
+  const { flex, theme } = props
+  return {
+    ...theme.mixins.container,
+    ...(flex && { flex: 1 }),
+    backgroundColor: theme.palette.background.default.string(),
+  }
+})
 
 const Container = (props) => {
   const { children, ...other } = props

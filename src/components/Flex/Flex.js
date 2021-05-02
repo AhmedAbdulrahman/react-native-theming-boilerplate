@@ -8,6 +8,10 @@ function flexPrefix(key) {
 
 const View = styled.View((props) => {
   return {
+    ...(props.mt && { marginTop: props.theme.spacing(props.mt) }),
+    ...(props.mr && { marginRight: props.theme.spacing(props.mr) }),
+    ...(props.mb && { marginBottom: props.theme.spacing(props.mb) }),
+    ...(props.ml && { marginLeft: props.theme.spacing(props.ml) }),
     flex: props.flex,
     flexDirection: props.flexDirection,
     justifyContent: flexPrefix(props.justify),

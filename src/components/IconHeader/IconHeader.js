@@ -9,10 +9,11 @@ const IconHeader = ({ onPress, ...other }) => {
   const navigation = useNavigation()
   const theme = useTheme()
   const handleClick = onPress || (() => navigation.goBack())
+  const iconColor = theme.palette.text.primary.string()
 
   return (
     <TouchableOpacity onPress={handleClick} style={styles.container} {...other}>
-      <SvgIcon icon="ChevronLeft" color={theme.palette.common.white.string()} />
+      <SvgIcon icon="ChevronLeft" color={iconColor} />
     </TouchableOpacity>
   )
 }

@@ -1,6 +1,5 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import { Pressable } from 'react-native'
 import styled, { useTheme } from 'styled-components'
 import SvgIcon from 'components/SvgIcon'
 
