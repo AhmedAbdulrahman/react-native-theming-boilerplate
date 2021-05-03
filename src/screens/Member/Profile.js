@@ -29,7 +29,7 @@ const Profile = () => {
               <Typography color="dark" variant="h4" paragraph>
                 Account Settings
               </Typography>
-              <Typography color="grey" variant="body1">
+              <Typography color="textSecondary" variant="body1">
                 Update your settings like notifications, payments, profile edit etc.
               </Typography>
             </Flex>
@@ -39,10 +39,10 @@ const Profile = () => {
               <SvgIcon icon="Profile" color="grey" />
             </Spacing>
             <Flex>
-              <Typography color="dark" variant="h7" gutterBottom>
+              <Typography color="dark" variant="h6" gutterBottom>
                 Profile Information
               </Typography>
-              <Typography color="dark" variant="body2" gutterBottom>
+              <Typography color="textSecondary" variant="body2" gutterBottom>
                 Change your account information
               </Typography>
             </Flex>
@@ -53,10 +53,10 @@ const Profile = () => {
               <SvgIcon icon="Lock" color="grey" />
             </Spacing>
             <Flex>
-              <Typography color="dark" variant="h7" gutterBottom>
+              <Typography color="dark" variant="h6" gutterBottom>
                 Change Password
               </Typography>
-              <Typography color="dark" variant="body2" gutterBottom>
+              <Typography color="textSecondary" variant="body2" gutterBottom>
                 Change your password
               </Typography>
             </Flex>
@@ -67,10 +67,10 @@ const Profile = () => {
               <SvgIcon icon="Card" color="grey" />
             </Spacing>
             <Flex>
-              <Typography color="dark" variant="h7" gutterBottom>
+              <Typography color="dark" variant="h6" gutterBottom>
                 Payment Methods
               </Typography>
-              <Typography color="dark" variant="body2" gutterBottom>
+              <Typography color="textSecondary" variant="body2" gutterBottom>
                 Add your credit {`&`} debit cards
               </Typography>
             </Flex>
@@ -81,10 +81,10 @@ const Profile = () => {
               <SvgIcon icon="Marker" color="grey" />
             </Spacing>
             <Flex>
-              <Typography color="dark" variant="h7" gutterBottom>
+              <Typography color="dark" variant="h6" gutterBottom>
                 Locations
               </Typography>
-              <Typography color="dark" variant="body2" gutterBottom>
+              <Typography color="textSecondary" variant="body2" gutterBottom>
                 Add or remove your delivery locations
               </Typography>
             </Flex>
@@ -95,10 +95,10 @@ const Profile = () => {
               <SvgIcon icon="Facebook" color="grey" />
             </Spacing>
             <Flex>
-              <Typography color="dark" variant="h7" gutterBottom>
+              <Typography color="dark" variant="h6" gutterBottom>
                 Add Social Account
               </Typography>
-              <Typography color="dark" variant="body2" gutterBottom>
+              <Typography color="textSecondary" variant="body2" gutterBottom>
                 Add Facebook, Twitter etc
               </Typography>
             </Flex>
@@ -109,10 +109,10 @@ const Profile = () => {
               <SvgIcon icon="Share" color="grey" />
             </Spacing>
             <Flex>
-              <Typography color="dark" variant="h7" gutterBottom>
+              <Typography color="dark" variant="h6" gutterBottom>
                 Refer to Friends
               </Typography>
-              <Typography color="dark" variant="body2" gutterBottom>
+              <Typography color="textSecondary" variant="body2" gutterBottom>
                 Get $10 for reffering friends
               </Typography>
             </Flex>
@@ -132,10 +132,10 @@ const Profile = () => {
               <SvgIcon icon="Sun" color="grey" />
             </Spacing>
             <Flex>
-              <Typography color="dark" variant="h7" gutterBottom>
+              <Typography color="dark" variant="h6" gutterBottom>
                 Dark Mode
               </Typography>
-              <Typography color="dark" variant="body2" gutterBottom>
+              <Typography color="textSecondary" variant="body2" gutterBottom>
                 Use darker theme to keep your eyes comfortable at night.
               </Typography>
             </Flex>
@@ -159,10 +159,10 @@ const Profile = () => {
               <SvgIcon icon="Notify" color="grey" />
             </Spacing>
             <Flex>
-              <Typography color="dark" variant="h7" gutterBottom>
+              <Typography color="dark" variant="h6" gutterBottom>
                 Push Notifications
               </Typography>
-              <Typography color="dark" variant="body2" gutterBottom>
+              <Typography color="textSecondary" variant="body2" gutterBottom>
                 For daily update you will get it
               </Typography>
             </Flex>
@@ -187,10 +187,10 @@ const Profile = () => {
               <SvgIcon icon="Book" color="grey" />
             </Spacing>
             <Flex>
-              <Typography color="dark" variant="h7" gutterBottom>
+              <Typography color="dark" variant="h6" gutterBottom>
                 Rate Us
               </Typography>
-              <Typography color="dark" variant="body2" gutterBottom>
+              <Typography color="textSecondary" variant="body2" gutterBottom>
                 Rate us on AppStore
               </Typography>
             </Flex>
@@ -202,10 +202,10 @@ const Profile = () => {
               <SvgIcon icon="Book" color="grey" />
             </Spacing>
             <Flex>
-              <Typography color="dark" variant="h7" gutterBottom>
+              <Typography color="dark" variant="h6" gutterBottom>
                 FAQ
               </Typography>
-              <Typography color="dark" variant="body2" gutterBottom>
+              <Typography color="textSecondary" variant="body2" gutterBottom>
                 Frequently asked questions
               </Typography>
             </Flex>
@@ -216,7 +216,7 @@ const Profile = () => {
               <SvgIcon icon="Lock" color="grey" />
             </Spacing>
             <Flex>
-              <Typography color="dark" variant="h7" gutterBottom>
+              <Typography color="dark" variant="h6" gutterBottom>
                 Logout
               </Typography>
             </Flex>
