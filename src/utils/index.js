@@ -1,4 +1,5 @@
 export { default as getContrastRatio } from './getContrastRatio'
+export { default as generateMasonryGrid } from './generateMasonryGrid'
 export { default as elevationShadowStyle } from './elevationShadowStyle'
 export { default as renderNode } from './renderNode'
 export { default as nodeType } from './nodeType'
