@@ -1,6 +1,6 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import styled, { useTheme } from 'styled-components'
 import Animated from 'react-native-reanimated'
 import mergeRefs from 'react-merge-refs'
 import TextFieldLabel from './partials/TextFieldLabel'
@@ -45,7 +45,7 @@ const Input = styled.TextInput((props) => ({
   includeFontPadding: 'false',
 
   ...(props.variant === 'outlined' && {
-    padding: props.theme.spacing(1.8),
+    padding: props.theme.spacing(1.7, 2, 2, 0),
 
     borderWidth: 2,
     borderRadius: props.theme.spacing(0.8),
@@ -93,6 +93,8 @@ const TextField = React.forwardRef(function TextField(props, ref) {
     style,
     ...other
   } = props
+
+  const theme = useTheme()
   const inputRef = React.useRef()
 
   const focusAnimatedValue = React.useRef(new Animated.Value(0))
@@ -186,6 +188,7 @@ const TextField = React.forwardRef(function TextField(props, ref) {
             onChangeText={handleChangeText}
             defaultValue={defaultValue}
             placeholder={placeholder}
+            placeholderTextColor={theme.palette.text.secondary.string()}
             fullWidth={fullWidth}
             variant={variant}
             label={label}
