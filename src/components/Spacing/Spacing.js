@@ -17,13 +17,14 @@ const styleMap = {
   a: 'align',
   i: 'Items',
   w: 'Wrap',
+  o: 'Flow',
 }
 
 const Spacing = (props) => {
   const { children: childrenProp, container = false } = props
   const theme = useTheme()
   const styleKeys = Object.keys(props).filter(
-    (key) => key.search(/(mt|mr|mb|ml|pt|pr|pb|pl|fd|jc|ai|fw)/g) !== -1,
+    (key) => key.search(/(mt|mr|mb|ml|pt|pr|pb|pl|fd|jc|ai|fw|fo|f)/g) !== -1,
   )
 
   const getStyle = (child) => {
