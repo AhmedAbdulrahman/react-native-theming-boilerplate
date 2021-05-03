@@ -1,4 +1,5 @@
 import blue from './blue'
+import blueGrey from './blueGrey'
 import common from './common'
 import grey from './grey'
 import green from './green'
@@ -9,6 +10,7 @@ import colorize from './colorize'
 
 export const colorsMap = {
   blue,
+  blueGrey,
   common,
   green,
   grey,
