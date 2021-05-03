@@ -8,7 +8,7 @@ export const light = {
     // The most important text.
     primary: colors.common.black,
     // Secondary text.
-    secondary: colors.common.black.fade(0.65),
+    secondary: colors.common.black.fade(0.55),
     // Disabled text have even lower visual prominence.
     disabled: colors.common.black.fade(0.35),
     // Text hints.
