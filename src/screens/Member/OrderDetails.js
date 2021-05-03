@@ -8,7 +8,7 @@ import AccordionContent from 'components/AccordionContent'
 import Button from 'components/Button'
 import Flex from 'components/Flex'
 import SvgIcon from 'components/SvgIcon'
-import Media from 'components/Media'
+import Media from 'containers/ProductMedia'
 import Spacing from 'components/Spacing'
 import PriceBreakdown from 'components/PriceBreakdown'
 import Divider from 'components/Divider'
@@ -27,10 +27,6 @@ const OrderListItem = styled(ListItem)(() => ({
   alignItems: 'flex-start',
 }))
 
-const OrderMedia = styled(Media)(() => ({
-  width: 64,
-}))
-
 const Accordion = styled(StyledAccordion)((props) => ({
   marginVertical: props.theme.spacing(3),
 }))
@@ -44,7 +40,7 @@ const order = {
   id: '0',
   size: 'M',
   total: 249,
-  image: 'https://placekitten.com/64/96',
+  image: 'https://placekitten.com/500/500',
 }
 
 const OrderDetails = () => {
@@ -53,25 +49,25 @@ const OrderDetails = () => {
     <SafeAreaView edges={['top']}>
       <Header
         leftComponent={<IconHeader />}
-        centerComponent={<Typography>{order.title}</Typography>}
+        centerComponent={<Typography color="dark">{order.title}</Typography>}
       />
       <RootFlatList
         data={[order]}
         ListHeaderComponent={() => (
           <>
-            <Typography>Jane Doe</Typography>
-            <Typography>Torkel Knutssonsgatan 27</Typography>
-            <Typography>118 25 Stockholm</Typography>
-            <Typography>SE</Typography>
+            <Typography color="dark">Jane Doe</Typography>
+            <Typography color="dark">Torkel Knutssonsgatan 27</Typography>
+            <Typography color="dark">118 25 Stockholm</Typography>
+            <Typography color="dark">SE</Typography>
             <Accordion>
               <AccordionHeader>
-                <Typography>Billing Address</Typography>
+                <Typography color="dark">Billing Address</Typography>
               </AccordionHeader>
               <AccordionContent>
-                <Typography>Jane Doe</Typography>
-                <Typography>Torkel Knutssonsgatan 27</Typography>
-                <Typography>118 25 Stockholm</Typography>
-                <Typography>SE</Typography>
+                <Typography color="dark">Jane Doe</Typography>
+                <Typography color="dark">Torkel Knutssonsgatan 27</Typography>
+                <Typography color="dark">118 25 Stockholm</Typography>
+                <Typography color="dark">SE</Typography>
               </AccordionContent>
             </Accordion>
             <Button size="large" color="success" fullWidth>
@@ -97,7 +93,7 @@ const OrderDetails = () => {
           const item = data.item
           return (
             <OrderListItem disableGutters>
-              <OrderMedia style={{ aspectRatio: 64 / 96 }} uri={item.image} />
+              <Media uri={item.image} />
               <Spacing ml={2}>
                 <Flex>
                   <Typography color="dark" variant="body2">

@@ -7,8 +7,12 @@ const LinePriceTotal = (props) => {
   const { label, value } = props
   return (
     <LinePrice isTotal>
-      <Typography variant="subtitle1">{label}</Typography>
-      <Typography variant="subtitle1">{value}</Typography>
+      <Typography color="dark" variant="subtitle1">
+        {label}
+      </Typography>
+      <Typography color="dark" variant="subtitle1">
+        {value}
+      </Typography>
     </LinePrice>
   )
 }

@@ -3,7 +3,7 @@ import styled, { useTheme } from 'styled-components'
 import { FlatList } from 'react-native'
 import faker from 'faker'
 import ListItemLink from 'components/ListItemLink'
-import Media from 'components/Media'
+import Media from 'containers/ProductMedia'
 import Flex from 'components/Flex'
 import Typography from 'components/Typography'
 import Container from 'components/Container'
@@ -11,11 +11,6 @@ import Spacing from 'components/Spacing'
 import SvgIcon from 'components/SvgIcon'
 import SafeAreaView from 'components/SafeAreaView'
 import { Routes } from 'navigation/Routes'
-
-const OrderMedia = styled(Media)(() => ({
-  width: 100,
-  height: '100%',
-}))
 
 const OrderListItem = styled(ListItemLink)(() => ({
   alignItems: 'flex-start',
@@ -31,8 +26,7 @@ const orderData = [...Array(10).keys()].map((i) => {
     total: 249,
     completed: true,
     date: '19 aug',
-    uri: `https://source.unsplash.com/random/${64 + i}x${96 + i}?food}`,
-    // this is data for renderItem FlatList
+    uri: `https://source.unsplash.com/random/${1000 + i}x${900 + i}?food}`,
   }
 })
 
@@ -46,8 +40,8 @@ const Orders = () => {
           showsVerticalScrollIndicator={false}
           renderItem={({ item }) => (
             <OrderListItem disableGutters divider to={Routes.OrderDetails}>
-              <Spacing mt={1} mb={2}>
-                <OrderMedia uri={item.uri} />
+              <Spacing mt={1}>
+                <Media uri={item.uri} MediaProps={{ width: 35, height: 25 }} />
               </Spacing>
               <Spacing ml={2}>
                 <Flex>
@@ -75,15 +69,13 @@ const Orders = () => {
             </OrderListItem>
           )}
           ListHeaderComponent={
-            <Spacing mt={3} mr={4} mb={4}>
-              <Flex flex={1}>
-                <Typography color="dark" variant="h4" paragraph>
-                  Your Orders
-                </Typography>
-                <Typography color="grey" variant="body1">
-                  Update your settings like notifications, payments, profile edit etc.
-                </Typography>
-              </Flex>
+            <Spacing container mt={3} mr={4} mb={4}>
+              <Typography color="dark" variant="h4" paragraph>
+                Your Orders
+              </Typography>
+              <Typography color="grey" variant="body1">
+                Update your settings like notifications, payments, profile edit etc.
+              </Typography>
             </Spacing>
           }
         />

@@ -27,19 +27,19 @@ const PriceBreakdown = React.forwardRef(function PriceBreakdown(props, ref) {
   return (
     <Root ref={ref} {...other}>
       <LinePrice>
-        <Typography>Subtotal</Typography>
-        <Typography>{subtotal}</Typography>
+        <Typography color="dark">Subtotal</Typography>
+        <Typography color="dark">{subtotal}</Typography>
       </LinePrice>
 
       <LinePrice>
-        <Typography>Delivery</Typography>
-        <Typography>{subtotal}</Typography>
+        <Typography color="dark">Delivery</Typography>
+        <Typography color="dark">{subtotal}</Typography>
       </LinePrice>
 
       {hasDiscount && (
         <LinePrice>
-          <Typography>discount</Typography>
-          <Typography>{discount}</Typography>
+          <Typography color="dark">discount</Typography>
+          <Typography color="dark">{discount}</Typography>
         </LinePrice>
       )}
 
