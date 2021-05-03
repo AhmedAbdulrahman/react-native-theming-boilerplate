@@ -1,23 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Dimensions, ImageBackground } from 'react-native'
+import { Image } from 'react-native'
+import { responsiveWidth, responsiveHeight } from 'react-native-responsive-dimensions'
 import Animated from 'react-native-reanimated'
 import styled from 'styled-components'
 
-const AnimatedMedia = Animated.createAnimatedComponent(ImageBackground)
+const AnimatedMedia = Animated.createAnimatedComponent(Image)
+export const HEADER_IMAGE_HEIGHT = responsiveHeight(100) / 3
 
-const BackgroundMedia = styled(AnimatedMedia)(() => ({
+const HeaderMedia = styled(AnimatedMedia)(() => ({
   position: 'absolute',
   top: 0,
   left: 0,
-  width: wWidth,
+  width: responsiveWidth(100),
   resizeMode: 'cover',
 }))
 
 const { Extrapolate, interpolate } = Animated
-const { height: wHeight, width: wWidth } = Dimensions.get('window')
-
-export const HEADER_IMAGE_HEIGHT = wHeight / 3
 
 const ProductHeaderImage = ({ uri, y }) => {
   const height = interpolate(y, {
@@ -30,7 +29,7 @@ const ProductHeaderImage = ({ uri, y }) => {
     outputRange: [0, -100],
     extrapolateLeft: Extrapolate.CLAMP,
   })
-  return <BackgroundMedia source={{ uri }} style={{ top, height }} />
+  return <HeaderMedia source={{ uri }} style={{ top, height }} />
 }
 
 ProductHeaderImage.propTypes = {
