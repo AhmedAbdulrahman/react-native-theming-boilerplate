@@ -1,12 +1,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import BaseMedia from 'components/Media'
+import Media from 'components/Media'
 import Fade from 'components/Fade'
-
-const Media = styled(BaseMedia)({
-  aspectRatio: String(2 / 3),
-})
 
 const ProductMedia = (props) => {
   const { onLoad, ...other } = props
