@@ -1,38 +1,38 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
+import { Pressable } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 import styled from 'styled-components'
 import ProductMedia from 'containers/ProductMedia'
-import Link from 'navigation/Link'
 import ProductToolbar from 'containers/ProductToolbar'
 import { Routes } from 'navigation/Routes'
 
-const Root = styled.View({})
-
-const Media = styled(ProductMedia)({
-  flexGrow: 1,
-})
+const Link = styled(Pressable)(() => ({
+  flex: 1,
+}))
 
 const ProductCard = React.forwardRef(function ProductCard(props, ref) {
-  const { product, MediaProps, MediaContaierProps, ...other } = props
+  const { item, horizontal, MediaProps, MediaContaierProps, ...other } = props
+  const navigation = useNavigation()
+
+  const handlePress = React.useCallback(() => {
+    navigation.push(Routes.Product, { data: item })
+  }, [item, navigation])
 
   return (
-    <Root ref={ref} {...other}>
-      <Link to={Routes.Product} params={{ product }}>
-        <Root {...MediaContaierProps}>
-          <Media uri={product.uri} style={{ aspectRatio: 2 / 3 }} {...MediaProps} />
-        </Root>
-      </Link>
-      <ProductToolbar {...product} />
-    </Root>
+    <Link ref={ref} onPress={handlePress} {...other}>
+      <ProductMedia uri={item.uri} {...{ MediaProps }} />
+      <ProductToolbar horizontal={horizontal} {...item} />
+    </Link>
   )
 })
 
 ProductCard.propTypes = {
-  isFeatured: PropTypes.bool,
-  product: PropTypes.object,
+  item: PropTypes.object,
   MediaProps: PropTypes.object,
   MediaContaierProps: PropTypes.object,
   LinkProps: PropTypes.object,
+  horizontal: PropTypes.bool,
 }
 
 export default React.memo(ProductCard)
