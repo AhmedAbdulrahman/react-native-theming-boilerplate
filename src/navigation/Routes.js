@@ -4,9 +4,11 @@ export const Routes = {
   Cart: 'Cart',
   Profile: 'Profile',
   Catalog: 'Catalog',
+  Resturants: 'Resturants',
   Products: 'Products',
   Product: 'Product',
   Search: 'Search',
+  SearchResult: 'SearchResult',
   Login: 'Login',
   Register: 'Register',
   ProfileDetails: 'Profile Details',
@@ -26,5 +28,4 @@ export const TabRoutes = {
   Search: 'Search',
   Orders: 'Orders',
   Profile: 'Profile',
-  Shop: 'Shop',
 }
