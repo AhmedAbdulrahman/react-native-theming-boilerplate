@@ -1,118 +1,69 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import { Animated, StyleSheet, Platform } from 'react-native'
+import { FlatList, Platform } from 'react-native'
 import { useTheme } from 'styled-components'
 import ProductCard from 'containers/ProductCard'
 import Spacing from 'components/Spacing'
-import HeroItem from './partials/HeroItem'
+import Typography from 'components/Typography'
+import { Routes } from 'navigation/Routes'
+import Link from 'navigation/Link'
 
 const ProductFlatList = (props) => {
-  const { children, section, horizontal, ...other } = props
+  const { data, title, ...other } = props
   const theme = useTheme()
 
   const ITEM_SIZE =
     Platform.OS === 'ios'
-      ? theme.extras.constants.WINDOW_WIDTH * 0.68
+      ? theme.extras.constants.WINDOW_WIDTH
       : theme.extras.constants.WINDOW_WIDTH * 0.74
-  const FULLSIZE = ITEM_SIZE + theme.spacing() * 2
-  const IMAGE_SIZE = theme.extras.constants.WINDOW_WIDTH * 0.4
 
-  const ITEM_FULLSIZE = IMAGE_SIZE * 0.7 + theme.spacing() * 2
-
-  const scrollX = React.useRef(new Animated.Value(0)).current
-
-  const renderHeroItem = React.useCallback(
-    ({ item, index }) => {
-      const inputRange = [(index - 1) * FULLSIZE, index * FULLSIZE, (index + 1) * FULLSIZE]
-
-      const scale = scrollX.interpolate({
-        inputRange,
-        outputRange: [1.2, 1.5, 1.2],
-      })
-
-      const opacity = scrollX.interpolate({
-        inputRange,
-        outputRange: [0.5, 1, 0.5],
-      })
-
-      return <HeroItem item={item} opacity={opacity} scale={scale} itemSize={ITEM_SIZE} />
-    },
-    [FULLSIZE, ITEM_SIZE, scrollX],
-  )
+  const keyExtractor = React.useCallback((item) => item?.key, [])
 
   const renderListItem = React.useCallback(
-    ({ item, index }) => {
-      const inputRange = [(index - 1) * FULLSIZE, index * FULLSIZE, (index + 1) * FULLSIZE]
-
-      const scale = scrollX.interpolate({
-        inputRange,
-        outputRange: [1.1, 1.2, 1.1],
-      })
-
+    ({ item }) => {
       return (
-        <Spacing key={item} mb={4}>
+        <Spacing container key={item} mb={4}>
           <ProductCard
-            type="normal"
-            style={{
-              marginVertical: theme.spacing(),
-              marginLeft: theme.spacing(),
-              marginRight: theme.spacing(),
-            }}
-            product={item}
-            MediaContaierProps={{
-              style: [
-                {
-                  height: ITEM_FULLSIZE * 1.2,
-                  width: IMAGE_SIZE * 1.4,
-                  overflow: 'hidden',
-                  borderRadius: theme.spacing(1.2),
-                },
-              ],
-            }}
-            MediaProps={{
-              animated: true,
-              rounded: true,
-              style: [
-                StyleSheet.absoluteFillObject,
-                {
-                  transform: [{ scale }],
-                  resizeMode: 'cover',
-                },
-              ],
-            }}
+            item={item}
+            MediaContaierProps={{ style: { height: 200 } }}
+            MediaProps={{ width: ITEM_SIZE * 0.23, height: 200 }}
           />
         </Spacing>
       )
     },
-    [FULLSIZE, IMAGE_SIZE, ITEM_FULLSIZE, scrollX, theme],
+    [ITEM_SIZE],
   )
 
   return (
-    <Animated.FlatList
-      data={section.sectionContent}
-      horizontal={horizontal}
+    <FlatList
+      keyExtractor={keyExtractor}
+      data={data}
       renderToHardwareTextureAndroid
-      bounces={false}
-      snapToAlignment="center"
-      scrollEventThrottle={16}
+      scrollEventThrottle={1}
       decelerationRate="fast"
-      showsHorizontalScrollIndicator={false}
-      // eslint-disable-next-line react-native/no-inline-styles
-      contentContainerStyle={{ alignItems: 'center' }}
-      renderItem={section.type === 'normal' ? renderListItem : renderHeroItem}
-      snapToInterval={section.type === 'normal' ? ITEM_FULLSIZE : FULLSIZE}
-      onScroll={Animated.event([{ nativeEvent: { contentOffset: { x: scrollX } } }], {
-        useNativeDriver: true,
-      })}
+      showsVerticalScrollIndicator={false}
+      renderItem={renderListItem}
+      ListHeaderComponent={() =>
+        title ? (
+          // eslint-disable-next-line no-unused-vars
+          <Spacing container fd="row" jc="space-between" mb={2}>
+            <Typography color="dark" variant="subhead">
+              {title}
+            </Typography>
+            <Link to={Routes.Resturants} params={{ data }} variant="body1" color="success">
+              Sell all
+            </Link>
+          </Spacing>
+        ) : null
+      }
       {...other}
     />
   )
 }
 
 ProductFlatList.propTypes = {
-  children: PropTypes.node,
-  section: PropTypes.object,
-  horizontal: PropTypes.bool,
+  data: PropTypes.object,
+  title: PropTypes.string,
 }
 
 export default ProductFlatList
