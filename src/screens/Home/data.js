@@ -1,6 +1,6 @@
 import faker from 'faker'
 
-export const data = Array.from({ length: 10 }, (_, i) => {
+export const data = Array.from({ length: 1 }, (_, i) => {
   return {
     key: `section-${i}`,
     title: faker.commerce.productName(1),
@@ -9,13 +9,12 @@ export const data = Array.from({ length: 10 }, (_, i) => {
     type: i % 3 === 0 ? 'hero' : 'normal',
     horizontal: i % 3 === 0 ? 'hero' : 'normal',
     // this is data for renderItem FlatList
-    sectionContent: Array.from({ length: 10 }, (idx, j) => {
+    sectionList: Array.from({ length: 100 }, (_, i) => {
       return {
-        key: `section-${i}-row-${j}`,
+        key: `section-${i}`,
+        // This is required for sections SectionList
         title: faker.commerce.productName().substring(0, 15),
-        uri: `https://source.unsplash.com/random/${800 + j}x${800 + j + i}?${
-          i % 3 === 0 ? 'resturants' : 'food'
-        }`,
+        uri: `https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80`,
         address: `${faker.address.county()}, ${faker.address.country()}`.substring(0, 15),
         ratings: '4.5',
         prep: '25min',
@@ -27,7 +26,7 @@ export const data = Array.from({ length: 10 }, (_, i) => {
   }
 })
 
-export const featuredItems = [...Array(2).keys()].map((i) => {
+export const featuredItems = [...Array(10).keys()].map((i) => {
   return {
     key: `section-${i}`,
     title: faker.commerce.productName(1),
@@ -41,11 +40,12 @@ export const featuredItems = [...Array(2).keys()].map((i) => {
         key: `section-${i}-row-${j}`,
         title: faker.commerce.productName().substring(0, 15),
         description: 'Shortbread, chocolate turtle cookies, and red velvet.',
-        uri: `https://source.unsplash.com/random/${400 + j}x${400 + j + i}?food`,
+        uri: `https://images.unsplash.com/photo-1600828785325-5888eefed73c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80`,
         images: [...Array(4).keys()].map(
-          (k) => `https://source.unsplash.com/random/${400 + j}x${400 + j + k}?food`,
+          (k) =>
+            `https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80`,
         ),
-        types: ['Chinese', 'American', 'Deshi food'],
+        types: ['Chinese', 'American'],
         ratings: '4.5',
         prep: '25min',
         delivery: 'Free Delivery',

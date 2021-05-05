@@ -1,16 +1,35 @@
+/* eslint-disable global-require */
 import * as React from 'react'
+import { ScrollView, RefreshControl, LogBox } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import { useTheme } from 'styled-components'
+import Promo from 'blocks/Promo'
+import ResturantList from 'blocks/ResturantList'
 import Header from 'components/Header'
-import ProductGridSection from 'containers/ProductGridSection'
 import { useModal } from 'containers/Modal'
 import Typography from 'components/Typography'
 import Flex from 'components/Flex'
+import Container from 'components/Container'
 import Button from 'components/Button'
 import SafeAreaView from 'components/SafeAreaView'
 import ListItem from 'components/ListItem'
 import { data, filterOptionDefaults } from './data'
 import FilterList from './partials/FilterList'
 
+LogBox.ignoreLogs(['VirtualizedLists should never be nested'])
+
+const wait = (timeout) => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, timeout)
+  })
+}
+
 const Home = () => {
+  const theme = useTheme()
+  const insets = useSafeAreaInsets()
+
+  const [refreshing, setRefreshing] = React.useState(false)
+  // eslint-disable-next-line no-unused-vars
   const [filterOptions, setFilterOptions] = React.useState(filterOptionDefaults)
   const [filterOption, setFilterOption] = React.useState({ categories: [], dietary: [], price: [] })
   const handleResetClick = React.useCallback(
@@ -55,6 +74,12 @@ const Home = () => {
     [filterOption],
   )
 
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true)
+
+    wait(2000).then(() => setRefreshing(false))
+  }, [])
+
   return (
     <SafeAreaView edges={['top']}>
       <Header
@@ -80,7 +105,39 @@ const Home = () => {
           paddingBottom: 10,
         }}
       />
-      <ProductGridSection products={data} />
+
+      <ScrollView
+        removeClippedSubviews
+        nestedScrollEnabled
+        showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+            tintColor={theme.palette.text.primary.rgb().string()}
+          />
+        }
+        style={{
+          paddingTop: (insets.top / 2) * 0.6,
+        }}
+      >
+        <Container>
+          <ResturantList title="Featured Partners" data={data} horizontal />
+          <Promo
+            local
+            heading="Free Delivery for 1 Month!"
+            media={require('../../../assets/images/Banner.png')}
+            text="You’ve to order at least $10 for using free delivery for 1 month."
+          />
+          <ResturantList title="Best Picks Restaurants by team" data={data} horizontal />
+          <ResturantList
+            title="All Restaurants"
+            data={data}
+            animated={false}
+            snapToInterval={false}
+          />
+        </Container>
+      </ScrollView>
     </SafeAreaView>
   )
 }
