@@ -11,12 +11,15 @@ import { featuredItems } from 'screens/Home/data'
 import ProductHeaderImage, { HEADER_IMAGE_HEIGHT } from './partials/ProductHeaderImage'
 import ProductHeader from './partials/ProductHeader'
 import ProductFeaturedItem from './partials/ProductFeaturedItem'
+import ProductStickyHeader from './partials/ProductStickyHeader'
+import ProductListContent, { defaultTabs } from './partials/ProductListContent'
 
 const Product = (props) => {
   const { route } = props
   const { data } = route.params
 
   const [isLoading, setIsLoading] = React.useState(true)
+  const [tabs, setTabs] = React.useState(defaultTabs)
   const scrollView = React.useRef(null)
   const y = useValue(0)
   const onScroll = onScrollEvent({ y })
@@ -67,8 +70,17 @@ const Product = (props) => {
                   })}
                 </ScrollView>
               </Spacing>
+
+              <ProductListContent
+                onMeasurement={(index, tab) => {
+                  tabs[index] = tab
+                  setTabs([...tabs])
+                }}
+                {...{ y }}
+              />
             </Flex>
           </Animated.ScrollView>
+          <ProductStickyHeader resturant={data} {...{ y, tabs, scrollView }} />
         </>
       )}
     </Container>
