@@ -32,6 +32,7 @@ module.exports = {
         ['hooks', './src/hooks/'],
         ['storage', './src/storage/'],
         ['utils', './src/utils/'],
+        ['blocks', './src/blocks/'],
       ],
       node: {
         extensions: [
@@ -129,7 +130,7 @@ module.exports = {
     ],
     'react-hooks/rules-of-hooks': ERROR,
     'react-hooks/exhaustive-deps': [ERROR, { additionalHooks: 'useEnhancedEffect' }],
-
+    'jsx-a11y/anchor-is-valid': OFF,
     'react-native/no-unused-styles': WARNING,
     'react-native/split-platform-components': ERROR,
     'react-native/no-inline-styles': WARNING,

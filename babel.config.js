@@ -12,6 +12,7 @@ const defaultAlias = {
   hooks: './src/hooks/',
   storage: './src/storage/',
   utils: './src/utils/',
+  blocks: './src/blocks/',
 }
 
 const defaultExtensions = [
